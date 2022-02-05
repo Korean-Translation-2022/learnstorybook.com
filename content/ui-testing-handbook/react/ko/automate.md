@@ -23,7 +23,7 @@ Pull request (PR)이 production 코드를 망가트리지 않는다는 걸 보�
 
 ![](/ui-testing-handbook/image-19.png)
 
-한눈에 봐도, pull request가 모든 품질 검사를 통과했는지 말할 수 있다. 그 답이 "네(yes)"라면 실제 코드를 리뷰하는 단계로 넘아가면 된다. 그렇지 못한 경우에는, 로그를 살펴보면서 무엇이 잘못됐는지 찾는다.
+한눈에 봐도, pull request가 모든 품질 검사를 통과했는지 말할 수 있다. 그 답이 "네(yes)"라면 실제 코드를 리뷰하는 단계로 넘어가면 된다. 그렇지 못한 경우에는, 로그를 살펴보면서 무엇이 잘못됐는지 찾는다.
 
 > "테스트는 의존성 최신화를 자동화해도 저에게 확신을 줍니다. 테스트가 통과하면, 최신화된 사항을 merge 시키죠."
 >
@@ -197,6 +197,6 @@ jobs:
 
 ## UI 테스팅 workflow를 정복하기
 
-우리가 만든 testing workflow는 Storybook을 이용해 독립된 컴포넌트로 시작한다. 코드를 짜는 동안 검사를 실행하면서 더 빠른 피드백 고리(feedback loop)를 만들 수 있다. 마지막으로 여러분의 모든 테스트 suite를 continuous integration을 이용해서 실행해보도록 하자.
+우리가 만든 testing workflow는 Storybook을 이용해 독립된 컴포넌트로 시작한다. 코드를 짜는 동안 검사를 실행하면서 더 빠른 피드백 고리(feedback loop)를 만들 수 있다. 마지막으로 여러분의 모든 테스트 suite를 지속적 통합(Continuous Integration)을 이용해서 실행해보도록 하자.
 
 Chapter 8 에서 이 완전한 작업 흐름을 실제로 보여줄 것이다. 새 기능을 production에 올리기 전에 어떻게 테스트할 수 있는지 보겠다.
