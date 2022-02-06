@@ -2,7 +2,6 @@
 title: 'React를 위한 Storybook 튜토리얼'
 tocTitle: '시작하기'
 description: 'Storybook을 개발 환경에 설치해봅시다'
-commit: ''
 ---
 
 Storybook은 개발 모드에서 앱과 함께 실행된다. 이것은 비즈니스 로직과 맥락(context)으로부터 분리된 UI 컴포넌트를 만들 수 있도록 도와준다. 이 Storybook 문서는 React를 위한 것이다. 그 밖의 [React Native](/intro-to-storybook/react-native/en/get-started), [Vue](/intro-to-storybook/vue/en/get-started), [Angular](/intro-to-storybook/angular/en/get-started) [Svelte](/intro-to-storybook/svelte/en/get-started) 및 [Ember](/intro-to-storybook/ember/en/get-started)에 대한 다른 문서도 존재한다.
@@ -45,8 +44,7 @@ yarn start
 ```
 
 ```
-💡  --watchAll 플래그를 포함하여 테스트 명령의 플래그는 모든 테스트가 실행되도록 한다. 이 튜토리얼을 진행하는 동안 다양한 테스트 시나리오가 소개될 것이다. 
-// 이에 따라 package.json의 스크립트를 조정하는 것을 고려해 보는 것이 좋을 것이다.
+💡  --watchAll 플래그를 포함하여 테스트 명령의 플래그는 모든 테스트가 실행되도록 한다. 이 튜토리얼을 진행하는 동안 다양한 테스트 시나리오가 소개될 것이다. 이에 따라 package.json의 scripts를 수정하는 것을 고려해 보는 것이 좋을 것이다.
 ```
 
 우리의 프론트엔드 앱 세 가지: 자동화된 테스트(Jest), 컴포넌트 개발(Storybook) 및 앱 자체 개발이 있다.
