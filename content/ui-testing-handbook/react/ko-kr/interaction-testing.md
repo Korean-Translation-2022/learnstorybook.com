@@ -10,6 +10,8 @@ description: 'Learn how to simulate user behaviour and run functional checks'
 commit: '20027df'
 ---
 
+<!-- 1차 번역  -->
+
 스위치를 눌러도,전등이 켜지지 않는다. 전구가 타버린 것일 수도, 혹은 배선 결함이었을 수도 있다.
 스위치와 전구는 벽 안쪽의 선들로 서로 연결되어 있다.
 
