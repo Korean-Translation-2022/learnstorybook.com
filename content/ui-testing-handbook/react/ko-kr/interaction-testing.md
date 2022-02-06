@@ -12,21 +12,21 @@ commit: '20027df'
 
 <!-- 1차 번역  -->
 
-스위치를 눌러도,전등이 켜지지 않는다. 전구가 타버린 것일 수도, 혹은 배선 결함이었을 수도 있다.
+스위치를 눌러도, 전등이 켜지지 않는다. 전구가 타버린 것일 수도, 혹은 배선 결함이었을 수도 있다.
 스위치와 전구는 벽 안쪽의 선들로 서로 연결되어 있다.
 
 <!-- 
 You flip the switch, and the light doesn’t turn on. It could be a burnt-out light bulb, or it could be faulty wiring. The switch and the bulb are connected to each other with wires inside the walls. -->
 
-App들도 마찬가지다. 표면에서 사용자들이 보고 상호작용하는 것은 UI이다. 표면 아래에서는, UI가 연결되어 있어 정보와 이벤트의 흐름이 잘 연결되도록 한다.
+App들도 마찬가지다. 겉보기에 사용자들이 보고 상호작용하는 것은 UI이다. 그 안을 들여다 보면, UI가 연결되어 있어 정보와 이벤트의 흐름이 잘 연결되도록 한다.
 
 <!-- 
 Apps are the same. On the surface is the UI that the user sees and interacts with. Under the hood, the UI is wired up to facilitate the flow of data and events. -->
 
-페이지와 같은 복잡한 UI를 만들수록 
+페이지처럼 더 복잡한 UI를 만들수록 
 컴포넌트들은 UI 렌더링 그 이상의 역할을 하게 된다.
 컴포넌트들은 정보를 조합하고 상태를 관리한다. 
-이 장에서는 독자들에게 컴퓨터를 사용하여 사용자 상호 작용을 시뮬레이션하고 확인하는 방법에 대해 일러준다.
+이 장에서는 컴퓨터를 사용하여 사용자 상호 작용을 시뮬레이션하고 확인하는 방법에 대해 설명한다.
 
 <!-- 
 As you build more complex UIs like pages, components become responsible for more than just rendering the UI. They fetch data and manage state. This chapter will teach you how to use a computer to simulate and verify user interactions. -->
@@ -43,14 +43,14 @@ As you build more complex UIs like pages, components become responsible for more
 <!-- 
 A component's primary task is to render a piece of the UI given a set of props. More complex components also track application state and pass behaviours down the component tree. -->
 
-예를 들어,컴포넌트는 초기 상태를 가지고 시작한다. 
-user가 입력창에 무언가를 타이핑하거나 버튼을 클릭할 때, 이런 동작은 app안의 event를 유발한다.
+예를 들어, 컴포넌트는 초기 상태를 가지고 시작한다. 
+user가 입력창에 무언가를 타이핑하거나 버튼을 클릭할 때, 이런 동작은 app안의 event를 발생시킨다.
 그럼 이 컴포넌트는 이 event에 대한 응답으로 상태를 업데이트한다. 이러한 상태 변화들은 렌더링된 UI를 업데이트한다. 이게 바로 상호작용을 하는 하나의 주기다 .
 
 <!-- 
 For example, a component will start with an initial state. When the user types something in an input field or clicks a button, it triggers an event within the app. The component updates state in response to this event. Those state changes then update the rendered UI. That's the complete cycle for an interaction. -->
 
-`InboxScreen`에서, 사용자는 업무를 고정시키기 위해 별 아이콘을 클릭할 수 있다. 혹은 checkbox를 클릭해 업무를 저장할 수 있다. 시각적 테스트들은 컴포넌트가 이러한 모든 상태 안에서 올바르게 보이는지 확인한다.또한 우리는 UI가 이와 같은 상호 작용에 정확히 응답하는 지 확인해야한다.
+`InboxScreen`에서, 사용자는 업무를 고정시키기 위해 별 아이콘을 클릭할 수 있다. 혹은 checkbox를 클릭해 업무를 보관할 수 있다. 시각적 테스트들은 컴포넌트가 이러한 모든 상태 안에서 올바르게 보이는지 확인한다. 또한 우리는 UI가 이와 같은 상호 작용에 정확히 응답하는지 확인해야한다.
 
 <!-- 
 On the `InboxScreen`, the user can click on the star icon to pin a task. Or click on the checkbox to archive it. Visual tests ensure that the component looks right in all those states. We also need to ensure that the UI is responding to those interactions correctly. -->
@@ -67,13 +67,12 @@ Here's what the interaction testing workflow looks like: -->
 <!-- 
 1.  **📝 Setup:** isolate the component and supply the appropriate props for the initial state. -->
 
-2.  **🤖 실행:** 컴포넌트를 렌더링하고 인터랙션을 시뮬레이션 한다.
+2.  **🤖 실행:** 컴포넌트를 렌더링하고 상호작용을 시뮬레이션 한다.
 
 <!-- 
 2.  **🤖 Action:** render the component and simulate interactions. -->
 
-3.  ✅ **assertions 작동시키기** 컴포넌트의
-상태가 올바르게 업데이트 되었는지 확인한다.
+3.  ✅ **assertions 작동시키기** 컴포넌트의 상태가 올바르게 업데이트 되었는지 확인한다.
 
 <!-- 
 3.  ✅ **Run assertions** to verify that the state updated correctly. -->
@@ -161,7 +160,7 @@ Stories are written in a portable format based on standard JavaScript modules. Y
 ![](/ui-testing-handbook/portable-stories.jpg)
 
 테스트 사례로 스토리를 작성할 때, 어떤 형태의 주장도 층층이 쌓일 수 있다. 한번 
-해보자. `InboxScreen.test.js`파일을 만들고 첫 번째 테스트를 작성해라.위의 예와 같이 우리는 이러한 테스트에 스토리를 가져와서 Testing-Library에 잇는 'render'기능을 이용해 쌓는다. 
+해보자. `InboxScreen.test.js`파일을 만들고 첫 번째 테스트를 작성해라. 위의 예와 같이 우리는 이러한 테스트에 스토리를 가져와서 Testing-Library에 잇는 'render'기능을 이용해 쌓는다. 
 
 <!-- 
 When you write your test cases as stories, any form of assertion can be layered on top. Let’s try that out. Create the `InboxScreen.test.js` file and write the first test. Like the example above, we are importing a story into this test and mounting it using the `render` function from Testing-Library. -->
@@ -312,7 +311,7 @@ describe('InboxScreen', () => {
   });
 });
 ```
-우리는 Testing Library을 이용해 스토리를 올리고 렌더링하는 테스트를 성공적으로 작성했다.그 후 시뮬레이션된 유저 동작을 적용하고 해당 컴포넌트의 상태가 정확히 업데이트 되었는지 확인한다.
+우리는 Testing Library을 이용해 스토리를 올리고 렌더링하는 테스트를 성공적으로 작성했다. 그 후 시뮬레이션된 유저 동작을 적용하고 해당 컴포넌트의 상태가 정확히 업데이트 되었는지 확인한다.
 
 <!-- 
 We’ve successfully written a test that loads up a story and renders it using Testing Library. Which then applies simulated user behaviour and checks to see if the component state is updated accurately or not. -->
