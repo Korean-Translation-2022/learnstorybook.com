@@ -19,7 +19,7 @@ description: 'UI 테스트를 위한 실질적인 방법'
 
 유닛테스트는 모듈을 격리시키고 모듈의 작동방식을 검증한다. 이는 입력값(props, state 등)을 제공하며 기댓값과 출력값을 비교한다. 유닛테스트는 테스팅 바람직하다. 왜냐하면 개별적으로 모듈을 테스트하면서 edge case들을 쉽게 다루고 실패의 원인을 잡아낼 수 있기 때문이다.
 
-<video autoPlay muted playsInline loop style="width:480px; margin: 0 auto;">
+<video autoPlay muted playsInline loop>
   <source 
   src="/tutorials/visual-testing-handbook/component-unit-testing.mp4"
   type="video/mp4" />
@@ -43,7 +43,7 @@ description: 'UI 테스트를 위한 실질적인 방법'
 
 개발하는 동안 브라우저에서 컴포넌트를 렌더링하여 컴포넌트가 어떻게 보이는지 빠르게 수동 확인을 위해 "실행"해라. 컴포넌트 탐색기에 나열된 각 테스트 케이스를 작동시키면서 컴포넌트의 변경사항을 확인해라.
 
-<video autoPlay muted playsInline loop style="width:480px; margin: 0 auto;">
+<video autoPlay muted playsInline loop>
   <source 
   src="/tutorials/visual-testing-handbook/storybook-toggling-stories.mp4"
   type="video/mp4" />
@@ -53,7 +53,7 @@ QA 단계에서 회귀를 감지하고 UI 일관성을 지켜기 위해 자동�
 
 커밋할 때마다 새 이미지 스냅샷이 이전에 승인된 기준 스냅샷과 자동으로 비교된다. 기계가 시각적 차이를 감지하면 개발자는 의도적인 변경을 승인하거나 우발적인 버그를 수정하라는 알림을 받는다.
 
-<video autoPlay muted playsInline loop style="width:480px; margin: 0 auto;">
+<video autoPlay muted playsInline loop>
   <source 
   src="/tutorials/visual-testing-handbook/component-visual-testing.mp4"
   type="video/mp4" />
