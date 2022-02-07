@@ -10,13 +10,13 @@ description: 'addon의 구조'
 <br/>
 
 스토리북은 앱 외부의 분리된 공간에서의 UI 컴포넌트 개발을 위한 도구입니다.
-Addons는 워크플로우 부분을 자동화하고 향상시키는 것을 도와줍니다. 실제로, 스토리북의 중요한 특징들은 addons와 만들어져 있습니다. 예시로 - [문서 Documentation](https://storybook.js.org/docs/react/writing-docs/introduction), [접근성 테스트 Accessibility testing](https://storybook.js.org/addons/@storybook/addon-a11y) and [상호작용 통제 Interactive controls](https://storybook.js.org/docs/react/essentials/controls) 등이 있습니다. 200여 개의 addons가[over 200](https://storybook.js.org/addons) UI 개발자들의 시간 절약을 돕고 있습니다.
+Addons는 워크플로우 부분을 자동화하고 향상하는 것을 도와줍니다. 실제로, 스토리북의 중요한 특징들은 addons와 만들어져 있습니다. 예시로 - [문서 Documentation](https://storybook.js.org/docs/react/writing-docs/introduction), [접근성 테스트 Accessibility testing](https://storybook.js.org/addons/@storybook/addon-a11y) and [상호작용 통제 Interactive controls](https://storybook.js.org/docs/react/essentials/controls) 등이 있습니다. 200여 개의 addons가[over 200](https://storybook.js.org/addons) UI 개발자들의 시간 절약을 돕고 있습니다.
 
 ## 무엇을 만들 것인가?
 
-CSS 레이아웃이 디자인과 맞는 지에 대해 확언하는 것은 어려운 일입니다. Eyeballing alignment은 미묘할 수 있습니다. 특히나 DOM 엘리먼트가 멀리 떨어져 있거나 이상한 모양을 가지고 있다면 말입니다.
+CSS 레이아웃이 디자인과 맞는지에 대해 확언하는 것은 어려운 일입니다. Eyeballing alignment은 미묘할 수 있습니다. 특히나 DOM 엘리먼트가 멀리 떨어져 있거나 이상한 모양을 가지고 있다면 말입니다.
 
-[Outline addon](https://storybook.js.org/addons/storybook-addon-outline) Outline addons는 CSS를 이용해서 UI 엘리먼트의 아웃라인을 잡는 툴바 버튼을 더하고 있습니다. 이것은 포지셔닝이나 자리 배치에 대한 것들을 한 눈에 쉽게 하도록 도와줍니다. 아래 예제를 살펴 보세요.
+[Outline addon](https://storybook.js.org/addons/storybook-addon-outline) Outline addons는 CSS를 이용해서 UI 엘리먼트의 아웃라인을 잡는 툴바 버튼을 더하고 있습니다. 이것은 포지셔닝이나 자리 배치에 대한 것들을 한눈에 쉽게 하도록 도와줍니다. 아래 예제를 살펴보세요.
 
 ![Outline Addon](../../images/outline-addon-hero.gif)
 
