@@ -81,7 +81,7 @@ LongTitle.args = {
 </video>
 
 만약 [시각적 테스팅(visual testing)](/intro-to-storybook/react/ko/test/)이면, 말줄임표 솔루션이 작동 중단되는 경우에도 알림이 표시됩니다. 모호한 edge case들은 테스트 커버리지 없이는 잊혀지기가 쉽습니다!
-`
+
 ### 변경 사항을 병합하기
-`
+
 변경 사항을 git에 merge하는 것을 잊지 마세요!
