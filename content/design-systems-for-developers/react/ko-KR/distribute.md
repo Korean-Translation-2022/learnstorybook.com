@@ -136,7 +136,7 @@ question private: no
 ```
 
 <div class="aside">
-💡 간결하게 하기 위해 <a href="https://docs.npmjs.com/creating-and-publishing-scoped-public-packages">패키지의 스코프(packagescopes)</a>는 언급하지 않았는데, 스코프의 이용은 다른 유저가 똑같은 이름의 패키지를 만들고, 또 조직과의 충돌없이 만들 수 있도록 허용합니다.
+💡 간결하게 하기 위해 <a href="https://docs.npmjs.com/creating-and-publishing-scoped-public-packages">패키지의 스코프(package scopes)</a>는 언급하지 않았는데, 스코프의 이용은 다른 유저가 똑같은 이름의 패키지를 만들고, 또 조직과의 충돌없이 만들 수 있도록 허용합니다.
 </div>
 
 
@@ -259,7 +259,7 @@ yarn auto release
 }
 ```
 
- 이제, `yarn release`를 실행할 때 (자동 생성 changelog를 사용할 때 제외하고) 자동적으로 위와 같은 모든 과정을 밟을 것입니다. 기본 브랜치에 푸시한 모든 커밋들은 배포된다.
+ 이제, `yarn release`를 실행할 때 (자동 생성 changelog를 사용할 때 제외하고) 자동적으로 위와 같은 모든 과정을 밟을 것입니다. 기본 브랜치에 푸시한 모든 커밋들은 배포됩니다.
 
 축하합니다! 매뉴얼적으로 디자인 시스템을 배포하기위한 기본적인 인프라 구축을 설정했습니다. 이제 지속적인 통합(CI)으로 어떻게 자동으로 배포할 것인지 알아보겠습니다.
 ## 자동으로 릴리즈 배포
@@ -380,7 +380,7 @@ module.exports = {
 + refs: {
 +   'design-system': {
 +     title: 'My design system',
-+     //👇 배포했을 때 Chromatic으로 배포된 url
++     //👇 Chromatic으로 배포된 url
 +     url: 'https://your-published-url.chromatic.com',
 +   },
 + },
@@ -437,7 +437,7 @@ export const decorators = [
   ),
 ];
 /*
- * Storybook의 parameters에 대한 더 많은 정보는 아래를 참고해보세요.
+ * Storybook의 parameters에 대한 더 많은 정보는 아래를 참고해보세요. -
  * https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
  */
 export const parameters = {
