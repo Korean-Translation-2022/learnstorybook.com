@@ -43,7 +43,7 @@ commit: 'a856d54'
 
 ![빨간색 테두리 버튼](/design-systems-for-developers/chromatic-button-border-change.png)
 
-이제 Chromatic에 내장된 [테스트 도구](https://www.chromatic.com/features/test)를 사용하여 시각적 테스트가 어떻게 작동하는지 살펴보겠습니다. 풀 리퀘스트가 생성되었을 때 Chromatic은 변경 사항에 대한 이미지를 캡처하여 동일한 컴포넌트의 이전 버전과 비교했습니다. 4가지 변경 사항이 발견되었습니다.
+이제 Chromatic에 내장된 [테스트 도구](https://www.chromatic.com/features/test)를 사용하여 시각적 테스트가 어떻게 작동하는지 살펴보겠습니다. 풀 리퀘스트(PR)가 생성되었을 때 Chromatic은 변경 사항에 대한 이미지를 캡처하여 동일한 컴포넌트의 이전 버전과 비교했습니다. 4가지 변경 사항이 발견되었습니다.
 
 ![풀 리퀘스트의 체크 목록](/design-systems-for-developers/chromatic-list-of-checks.png)
 
@@ -108,7 +108,7 @@ it('has a href attribute when rendering with linkWrapper', () => {
 
 ![단일 Jest 테스트를 실행합니다](/design-systems-for-developers/jest-test.png)
 
-이전에 스토리북을 배포하도록 GitHub Action을 구성했고, 이제 테스트도 포함하도록 조정할 수 있습니다. 기여자들은 이제 이 단위 테스트의 혜택을 받을 것입니다. 그리고 Link 컴포넌트는 회귀 테스트에 대응할 수 있습니다.
+이전에 Storybook을 배포하도록 GitHub Action을 구성했고, 이제 테스트도 포함하도록 조정할 수 있습니다. 기여자들은 이제 이 단위 테스트의 혜택을 받을 것입니다. 그리고 Link 컴포넌트는 회귀 테스트에 대응할 수 있습니다.
 
 ```yaml
 # .github/workflows/chromatic.yml
@@ -145,7 +145,7 @@ jobs:
 
 [세계 보건기구](https://www.who.int/disabilities/world_report/2011/report/en/)에 따르면 장애인은 전체 인구의 15%입니다. 디자인 시스템은 사용자 인터페이스의 기본요소를 포함하므로 접근성에 큰 영향을 미칩니다. 단 하나의 컴포넌트에 대한 접근성을 향상시킨다는 것은 회사 전체에서 해당 컴포넌트의 모든 인스턴스의 접근성이 향상된다는 것을 의미합니다.
 
-![스토리북 접근성 애드온(addon)](/design-systems-for-developers/storybook-accessibility-addon.png)
+![Storybook 접근성 애드온(addon)](/design-systems-for-developers/storybook-accessibility-addon.png)
 
 웹 접근성 표준(WCAG)을 실시간으로 확인하기 위한 도구인 Storybook의 접근성 애드온(addon)을 사용하여 포용력 있는 UI를 시작하세요.
 
