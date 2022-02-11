@@ -133,7 +133,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-![성공적인 빌드](/design-systems-for-developers/gh-action-with-test-successful-build.png)
+![성공적인 Circle 빌드](/design-systems-for-developers/gh-action-with-test-successful-build.png)
 
 <div class="aside"> 참고 : 업데이트를 번거롭게 만들 수 있는 너무 많은 단위 테스트에 주의하십시오. 디자인 시스템에 대한 단위 테스트를 적당한 수준에서 할 것을 권장합니다.</div>
 
