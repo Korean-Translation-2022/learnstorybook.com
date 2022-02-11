@@ -4,7 +4,7 @@ tocTitle: '소개'
 description: 'A guide to the latest production-ready tools for design systems'
 ---
 
-<div class="aside">이 가이드는 <b>전문 개발자들을 위한</b> 디자인 시스템 학습법에 대해 다루고있습니다. 자바스크립트(JavaScript), 깃(Git), 그리고 지속적인 통합 환경(Continuous Integration, CI)에 대해 어느 정도 경험을 하고 읽기를 권합니다. 또한 스토리 작성이나 설정 파일 수정 등의 스토리북의 기본 사용법을 알고 있어야 합니다.(<a href="/intro-to-storybook">스토리북 소개</a>를 참고해보세요).
+<div class="aside">이 가이드는 <b>전문 개발자들을 위한</b> 디자인 시스템 학습법에 대해 다루고 있습니다. 자바스크립트(JavaScript), 깃(Git), 그리고 지속적인 통합 환경(Continuous Integration, CI)에 대해 어느 정도 경험을 하고 읽기를 권합니다. 또한 스토리 작성이나 설정 파일 수정 등의 스토리북의 기본 사용법을 알고 있어야 합니다.(<a href="/intro-to-storybook">스토리북 소개</a>를 참고해보세요).
 </div>
 <br/>
 
@@ -49,7 +49,7 @@ description: 'A guide to the latest production-ready tools for design systems'
 #### 빌드 컴포넌트
 
 - 📚 [스토리북(Storybook)](http://storybook.js.org): UI 컴포넌트 개발과 자동으로 문서를 생성할 때 사용합니다.
-- ⚛️ [리액트(React)](https://reactjs.org/): 선언 중심 컴포넌트 UI(create-react-app)를 사용한다.
+- ⚛️ [리액트(React)](https://reactjs.org/): 선언 중심 컴포넌트 UI(create-react-app)를 사용합니다.
 - 💅 [스타일 컴포넌트(Styled-components)](https://www.styled-components.com/): 컴포넌트 단위의 스타일링에 사용합니다.
 - ✨ [프리티어(Prettier)](https://prettier.io/): 자동화된 코드 포맷팅에 사용합니다.
 
