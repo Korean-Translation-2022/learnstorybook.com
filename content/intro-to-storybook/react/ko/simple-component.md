@@ -12,7 +12,7 @@ description: '간단한 컴포넌트를 독립적으로 만들어봅시다'
 
 `Task`는 우리 앱의 핵심 컴포넌트입니다. 각각의 task는 현재 어떤 state 인지에 따라 약간씩 다르게 표시됩니다. 선택된 (또는 선택되지 않은) 체크 박스, task에 대한 정보, 그리고 task를 위아래로 움직일 수 있도록 도와주는 "핀" 버튼이 표시될 것입니다. 이를 위해 다음과 같은 prop들이 필요합니다:
 
-- `title` -- task를 설명해 주는 문자열
+- `title` – task를 설명해 주는 문자열
 - `state` - 현재 어떤 task가 목록에 있으며, 선택되어 있는지의 여부
 
 `Task` 컴포넌트를 만들기 시작할 때 먼저 위에서 살펴본 여러 유형의 task에 해당하는 테스트 상태(satate)를 작성합니다. 그런 다음 모의(mocked) 데이터를 사용하여 독립적 환경에서 컴포넌트를 구축하기 위해 Storybook을 사용합니다. 각각의 state에 따라 컴포넌트의 모습을 수동으로 테스트합니다.
@@ -95,7 +95,7 @@ Storybook에게 우리가 문서화하고 있는 컴포넌트에 대해 알려�
 - `component` -- 해당 컴포넌트
 - `title` -- Storybook 앱의 사이드바에서 컴포넌트를 참조하는 방법
 
-스토리를 정의하기 위해, 각각의 테스트 state에 해당하는 스토리를 만들기 위해서 우리는 함수를 내보냅니다. 스토리는 주어진 state 안에서 렌더링 된 요소(즉, prop이 포함된 컴포넌트)를 return(반환) 하는 함수입니다. 정확히는(이는?) [함수형 컴포넌트(Functional Component)](https://reactjs.org/docs/components-and-props.html#function-and-class-components)와 같습니다.
+스토리를 정의하기 위해, 각각의 테스트 state에 해당하는 스토리를 만들기 위해서 우리는 함수를 내보냅니다. 스토리는 주어진 state 안에서 렌더링 된 요소(즉, prop이 포함된 컴포넌트)를 return(반환) 하는 함수입니다. 정확히는 [함수형 컴포넌트(Functional Component)](https://reactjs.org/docs/components-and-props.html#function-and-class-components)와 같습니다.
 
 우리 컴포넌트의 순열(permutations)이 여러 개이므로 `Template` 변수에 할당하는 것이 편리합니다. 이 패턴을 스토리에 도입함으로써 작성하고 유지해야 하는 코드의 양이 줄어듭니다.
 
@@ -155,7 +155,7 @@ export const parameters = {
 };
 ```
 
-[`매개변수(parameters)`](https://storybook.js.org/docs/react/writing-stories/parameters)는 일반적으로 Storybook의 기능과 추가 기능(addons)의 동작을 제어하기 위하여 사용됩니다. 우리의 경우에는 이를 사용하여 `actions`(mocked callbacks)이 처리되는 방식을 구성할 것입니다.
+[`매개변수(parameters)`](https://storybook.js.org/docs/react/writing-stories/parameters)는 일반적으로 Storybook의 기능과 애드온의 동작을 제어하기 위하여 사용됩니다. 우리의 경우에는 이를 사용하여 `actions`(mocked callbacks)이 처리되는 방식을 구성할 것입니다.
 
 `actions`은 클릭이 되었을 때 Storybook UI의 actions 패널에 나타날 콜백을 생성할 수 있도록 해줍니다. 따라서 핀 버튼을 만들면, 버튼 클릭이 성공했는지 UI에서 확인할 수 있을 것입니다.
 
@@ -301,6 +301,3 @@ initStoryshots();
 <div class="aside">
 💡 Git으로 변경 사항 커밋 하는 것을 잊지 마세요!
 </div>
-
-
-
