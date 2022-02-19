@@ -231,9 +231,9 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 
 ## 자동화된 테스트
 
-이전 챕터에서 우리는 Storyshots을 이용하여 스냅샷 테스트하는 법을 배워보았습니다. `Task`에서는 렌더링이 잘 되는지 확인하는 것 이상의 많은 복잡성이 필요하지는 않았습니다. `TaskList`에서는 복잡성이 더해지기 때문에 특정 입력이 자동화된 테스트에 적합한 방식으로 출력되는지 확인해야 합니다. 이를 위해 [React Testing Livbrary](https://testing-library.com/docs/react-testing-library/intro/) 와 [@storybook/testing-react](https://storybook.js.org/addons/@storybook/testing-react) 를 사용하여 단위 테스트를 만들어 보겠습니다.
+이전 챕터에서 우리는 Storyshots을 이용하여 스냅샷 테스트하는 법을 배워보았습니다. `Task`에서는 렌더링이 잘 되는지 확인하는 것 이상의 많은 복잡성이 필요하지는 않았습니다. `TaskList`에서는 복잡성이 더해지기 때문에 특정 입력이 자동화된 테스트에 적합한 방식으로 출력되는지 확인해야 합니다. 이를 위해 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) 와 [@storybook/testing-react](https://storybook.js.org/addons/@storybook/testing-react) 를 사용하여 단위 테스트를 만들어 보겠습니다.
 
-![Jest 로고](https:`//storybook.js.org/tutorials/intro-to-storybook/testinglibrary-image.jpeg)
+![Jest 로고](https://storybook.js.org/tutorials/intro-to-storybook/testinglibrary-image.jpeg)
 
 ### 리액트 테스팅 라이브러리를 사용한 단위 테스트(Unit test)
 
@@ -241,7 +241,7 @@ Storybook 스토리, 수동 테스트 및 스냅샷 테스트는 UI 버그를 �
 
 그러나, 가끔 오류는 세부 사항에 숨어있습니다. 이러한 세부 사항에 대해 명시적인 테스트 프레임워크가 필요하며, 이는 우리에게 단위 테스트의 필요성을 가져다줍니다.
 
-우리의 경우에는 `TaskList`가`tasks` prop에서 전달된 일반 task보다 핀으로 고정된 task를 **먼저** 렌더링 하기를 원합니다. 이러한 특정 시나리오를 테스트하는 스토리(`WithPinnedTasks`)가 있다 할지라도, 컴포넌트가 task의 순서 지정을 **중단**하는 버그와 같은 경우 사람이 검토할 때는 판단하기 애매모호할 수 있습니다. 일반적인 시선에는 딱히 **“잘못되었어!”**라고 보이지 않을 것입니다.
+우리의 경우에는 `TaskList`가 `tasks` prop에서 전달된 일반 task보다 핀으로 고정된 task를 **먼저** 렌더링 하기를 원합니다. 이러한 특정 시나리오를 테스트하는 스토리(`WithPinnedTasks`)가 있다 할지라도, 컴포넌트가 task의 순서 지정을 **중단**하는 버그와 같은 경우 사람이 검토할 때는 판단하기 애매모호할 수 있습니다. 일반적인 시선에는 딱히 **“잘못되었어!”** 라고 보이지 않을 것입니다.
 
 따라서 이러한 문제를 피하기 위하여 리액트 테스팅 라이브러리를 사용하여 스토리를 DOM에 렌더링 하고 출력값의 두드러진 특징을 확인하기 위해 DOM 쿼리 코드를 실행할 수 있습니다. 스토리 형식의 좋은 점은 간단히 스토리를 테스트에 가져와 렌더링 할 수 있다는 점입니다!
 
@@ -270,7 +270,7 @@ it('renders pinned tasks at the start of the list', () => {
 ```
 
 <div class="aside">
-💡 [@storybook/testing-react](https://storybook.js.org/tutorials/intro-to-storybook/react/en/composite-component/)는 단위 테스트에서 Storybook 스토리를 재사용할 수 있게 해주는 훌륭한 애드온입니다. 테스트에서 스토리를 재사용함으로써 테스트할 수 있는 컴포넌트 시나리오 카탈로그를 만들 수 있습니다. 또한, 스토리의 모든 인수(args), 데코레이터, 그리고 다른 정보들은 이 라이브러리에 의해 구성됩니다. 방금 보았듯이, 이 테스트에서 해야 할 일은 어떤 스토리를 렌더링 할지 선택하는 것입니다.</div>
+💡 <a href="https://storybook.js.org/tutorials/intro-to-storybook/react/en/composite-component/">@storybook/testing-react</a>는 단위 테스트에서 Storybook 스토리를 재사용할 수 있게 해주는 훌륭한 애드온입니다. 테스트에서 스토리를 재사용함으로써 테스트할 수 있는 컴포넌트 시나리오 카탈로그를 만들 수 있습니다. 또한, 스토리의 모든 인수(args), 데코레이터, 그리고 다른 정보들은 이 라이브러리에 의해 구성됩니다. 방금 보았듯이, 이 테스트에서 해야 할 일은 어떤 스토리를 렌더링 할지 선택하는 것입니다.</div>
 
 ![TaskList 테스트 러너](https://storybook.js.org/tutorials/intro-to-storybook/tasklist-testrunner.png)
 
