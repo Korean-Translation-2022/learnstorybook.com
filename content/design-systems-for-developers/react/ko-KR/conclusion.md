@@ -8,7 +8,7 @@ description: '잘 갖춰놓은 디자인 시스템으로 시간 절약과 생산
 연구 논문에 따르면 재사용 코드는 [42-81% 시간절약](https://www.researchgate.net/publication/3188437_Evaluating_Software_Reuse_Alternatives_A_Model_and_Its_Application_to_an_Industrial_Case_Study?ev=publicSearchHeader&_sg=g8WraNGZNGPw0R-1-jGpy0XwUDeAr3qb472J6lhisyQ3l24pSmndO6anMdX2L3HdWHifsczPegR9wjA)과 [40%](http://www.cin.ufpe.br/~in1045/papers/art03.pdf)의 생산성 향상이라는 결과를 가져올 수 있다고 합니다. **사용자 인터페이스 코드(user interface code)**의 공유를 촉진시키는 디자인 시스템이 개발자들 사이에서 유명해지는 건 전혀 놀라운 일이 아닙니다.
 
 <!-- In the last few years, Tom and I witnessed countless veteran teams anchor their design system tooling around Storybook. They concentrated on reducing communication overhead, durable architecture, and automating repetitive manual tasks. We hope that distilling these common-sense tactics will help your design system flourish. -->
-지난 몇 년동안 Tom과 저는 셀 수 없이 많은 베테랑 팀들이 Storybook을 기반으로 한 디자인 시스템을 도구화하는 것을 지켜봤습니다. 그 팀들은 불필요한 커뮤니케이션 줄이기, 견고한 아키텍쳐, 그리고 반복적인 수동 작업의 자동화를 하는데 집중했습니다. 이러한 전술을 통해 당신의 디자인 시스템이 번창하는데 도움이 되길 바랍니다.
+지난 몇 년동안 Tom과 저는 셀 수 없이 많은 베테랑 팀들이 Storybook을 기반으로 한 디자인 시스템을 도입하는 것을 지켜봤습니다. 그 팀들은 불필요한 커뮤니케이션 줄이기, 견고한 아키텍쳐, 그리고 반복적인 수동 작업의 자동화를 하는데 집중했습니다. 이러한 전술을 통해 당신의 디자인 시스템이 번창하는데 도움이 되길 바랍니다.
 
 <!-- Thanks for learning with us. Subscribe to the Storybook mailing list to get notified when helpful articles and guides like this are published. -->
 우리와 함께 해줘서 감사합니다. 도움이 될 글들과 이와 같은 가이드들이 발행될 때마다 알림을 받을 수 있도록 Storybook의 뉴스레터를 구독해보세요.
@@ -69,10 +69,10 @@ Storybook의 디자인 시스템 테크 리드인 [Kyle Suss](https://github.com
 디자인 시스템은 디자인 파일, 컴포넌트 라이브러리, 토큰, 문서, 원칙, 기여의 흐름 등이 포함됩니다. 이 가이드는 디자인 시스템을 보는 개발자들의 관점으로 그 주제들이 한정되어 있습니다. 명확하게는 개발과 관련된 상세한 사항들, API 및 제품 디자인 시스템에 대한 시스템을 다루었습니다. 
 
 <!-- #### What about the governance side of design systems? -->
-#### 디자인 시스템의 통제적인(governance) 측면은요?
+#### 디자인 시스템의 관리적인(governance) 측면은요?
 
 <!-- Governance is a nuanced topic that is more extensive and organization-specific than we can fit into nine chapters. -->
-통제적인 측면은 더 광범위하고 조직의 특징마다 다르기 때문에 9개의 챕터로는 다루기 어렵습니다.
+관리적인 측면은 더 광범위하고 조직의 특징마다 다르기 때문에 9개의 챕터로는 다루기 어렵습니다.
 
 <!-- #### Does Storybook integrate with design tools? -->
 #### Storybook은 다른 디자인 툴과 동기화가 가능한가요?
