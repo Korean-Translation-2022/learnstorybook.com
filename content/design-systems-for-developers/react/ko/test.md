@@ -59,7 +59,7 @@ commit: 'a856d54'
 
 ![Chromatic에서 거부 검토](/design-systems-for-developers/chromatic-review-deny.png)
 
-변경 사항을 실행 취소하고 다시 커밋하여 시각적 테스트를 다시 통과하세요.
+변경 사항을 실행 취소하고 다시 커밋하여 시각적 테스트를 다시 통과해보세요.
 
 ## 기능성에 대한 단위 테스트
 
@@ -143,7 +143,7 @@ jobs:
 
 "접근성은 장애가 있는 사용자를 포함한 모든 사용자가 애플리케이션을 이해하고 탐색하고 상호 작용할 수 있음을 의미합니다. 온라인 [예제에는] 탭 키나 스크린 리더를 통해 사이트를 탐색하는 것처럼 콘텐츠에 접근할 수 있는 다른 방법들을 포함했습니다." 개발자 [T.Rowe Price의 Alex Wilson]이 (https://medium.com/storybookjs/instant-accessibility-qa-linting-in-storybook-4a474b0f5347)에 작성하였습니다.
 
-[세계 보건기구](https://www.who.int/disabilities/world_report/2011/report/en/)에 따르면 장애인은 전체 인구의 15%입니다. 디자인 시스템은 사용자 인터페이스의 기본요소를 포함하므로 접근성에 큰 영향을 미칩니다. 단 하나의 컴포넌트에 대한 접근성을 향상시킨다는 것은 회사 전체에서 해당 컴포넌트의 모든 인스턴스의 접근성이 향상된다는 것을 의미합니다.
+[세계 보건기구](https://www.who.int/disabilities/world_report/2011/report/en/)에 따르면 장애인은 전체 인구의 15%입니다. 디자인 시스템은 사용자 인터페이스의 컴포넌트를 포함하므로 접근성에 큰 영향을 미칩니다. 단 하나의 컴포넌트에 대한 접근성을 향상시킨다는 것은 회사 전체에서 해당 컴포넌트의 모든 인스턴스의 접근성이 향상된다는 것을 의미합니다.
 
 ![Storybook 접근성 애드온(addon)](/design-systems-for-developers/storybook-accessibility-addon.png)
 
