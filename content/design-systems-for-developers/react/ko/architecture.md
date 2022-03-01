@@ -13,7 +13,7 @@ commit: '798276b'
 
 당신이 개발 팀에서 일한다면, 규모가 크다고 팀이 효율적이지 않다는 사실을 알고 있을 것입니다. 팀이 성장할수록 잘못된 소통으로 인한 오해가 증가합니다. 또는 기존 UI 패턴을 문서화하지 못하거나 이를 잃어버리기도 합니다. 즉, 이것은 개발자들이 새로운 기능을 개발하기보다는 기능을 구축하는 바퀴를 재창조하게 됨을 의미합니다. 시간이 지남에 따라 프로젝트는 일회용 컴포넌트로 가득 차게 됩니다.
 
-우리도 이러한 곤경에 빠졌습니다. 팀이 숙련되었음에도 불구하고, UI 컴포넌트는 끊임없이 불어나고 재구성되었습니다. UI 패턴의 모양과 기능이 동일할것을 기대했지만, 각각의 컴포넌트는 진실의 근원(source of truth)을 분별할 수 없을 정도로 독특한 모양을 띠었습니다. 기여도 또한 현저히 낮았습니다.
+우리도 이러한 곤경에 빠졌습니다. 팀이 숙련되었음에도 불구하고, UI 컴포넌트는 끊임없이 불어나고 재구성되었습니다. UI 패턴의 모양과 기능이 동일할 것을 기대했지만, 각각의 컴포넌트는 진실의 근원(source of truth)을 분별할 수 없을 정도로 독특한 모양을 띠었습니다. 기여도 또한 현저히 낮았습니다.
 
 ![UIs diverge](/design-systems-for-developers/design-system-inconsistent-buttons.jpg)
 
@@ -35,7 +35,7 @@ commit: '798276b'
 
 ## 깃허브와 create-react-app으로 저장소 만들기
 
-[State of JS](https://stateofjs.com/)의 설문조사에 따르면, 가장 인기 있는 뷰 레이어는 리액트(React)입니다. 압도적으로 많은 스토리북에서 리액트를 사용하기 때문에, 이 튜토리얼에서도 [create-react-app](https://github.com/facebook/create-react-app) 보일러플레이트를 사용하겠습니다.
+[State of JS](https://stateofjs.com/)의 설문조사에 따르면, 가장 인기 있는 뷰 레이어는 리액트(React)입니다. 압도적으로 많은 Storybook에서 리액트를 사용하기 때문에, 이 튜토리얼에서도 [create-react-app](https://github.com/facebook/create-react-app) 보일러플레이트를 사용하겠습니다.
 
 터미널에 아래 명령어를 입력하여 실행해보세요.
 
@@ -86,7 +86,7 @@ git push -u origin master
 
 첫번째 작업은 가장 많이 사용되는 컴포넌트를 구분하기 위한 인벤토리를 생성하는 것입니다. 여기에는 종종 공통적으로 사용하는 UI 패턴을 식별하기 위해 다양한 웹사이트 또는 앱의 화면을 수동으로 분류하는 작업도 포함됩니다. 두 디자이너 [Brad Frost](http://bradfrost.com/blog/post/interface-inventory/), [Nathan Curtis](https://medium.com/eightshapes-llc/the-component-cut-up-workshop-1378ae110517)가 컴포넌트 목록을 생성하는 편리한 방법을 소개하고 있으니, 이 튜토리얼에서는 생략하도록 하겠습니다.
 
-개발자에게 유용한 휴리스틱:
+개발자에게 유용한 휴리스틱-
 
 - 하나의 UI 패턴이 3회 이상 사용되는 경우, 재사용 가능한 UI 컴포넌트로 간주합니다.
 - 하나의 UI 컴포넌트가 3개 이상의 프로젝트/팀에서 사용되는 경우, 디자인 시스템에 포함시킵니다.
