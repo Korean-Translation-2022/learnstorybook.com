@@ -59,7 +59,7 @@ const TasksSlice = createSlice({
   },
 });
 
-// slice 속 포함된 actions는 사용을 위해 컴포넌트로부터 내보내집니다. 
+// slice 속 포함된 액션 사용을 위해 컴포넌트로부터 내보내집니다. 
 export const { updateTaskState } = TasksSlice.actions;
 
 /*
