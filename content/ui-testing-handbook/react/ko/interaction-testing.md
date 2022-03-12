@@ -10,7 +10,7 @@ description: 'Learn how to simulate user behaviour and run functional checks'
 commit: '20027df'
 ---
 
-<!-- 1차 번역  -->
+<!-- 1차 리뷰 완료  -->
 
 스위치를 눌러도, 전등이 켜지지 않습니다. 전구가 타버린 것일 수도, 혹은 배선 결함이었을 수도 있습니다.
 스위치와 전구는 벽 안쪽의 선들로 서로 연결되어 있습니다.
@@ -58,12 +58,12 @@ On the `InboxScreen`, the user can click on the star icon to pin a task. Or clic
 
 ![](/ui-testing-handbook/interactive-taskbox.gif)
 
-상호 작용 테스트 워크플로우(workflow)는 다음과 같습니다.
+상호 작용 테스트 작업 흐름(workflow)은 다음과 같습니다.
 
 <!-- 
 Here's what the interaction testing workflow looks like: -->
 
-1.  **📝 구성:** 컴포넌트를 분리해 적절한 prop를 주고 초기상태로 만들어보자.
+1.  **📝 설정:** 컴포넌트를 분리해 적절한 prop를 주고 초기상태로 만들어보자.
 
 <!-- 
 1.  **📝 Setup:** isolate the component and supply the appropriate props for the initial state. -->
@@ -110,7 +110,7 @@ We can write tests that mimic real-world usage, instead of accessing a component
 <!-- 
 ## Reuse stories as interaction test cases -->
 
-앞 장에서는 'InboxScreen.stories.js' 파일에 'InboxScreen' 구성 요소의 모든 사용 사례를 목록으로 작성했습니다. 이를 통해 개발 중 모습을 확인하고 비주얼 테스트를 통해 regression(회귀,퇴행..)을 포착할 수 있었습니다. 
+앞 장에서는 'InboxScreen.stories.js' 파일에 'InboxScreen' 컴포넌트의 모든 사용 사례를 목록으로 작성했습니다. 이를 통해 개발 중 모습을 확인하고 비주얼 테스트를 통해 regression(회귀,퇴행..)을 포착할 수 있었습니다. 
 이 story들은 이제 우리의 상호 작용 테스트에도 힘을 실어줄 것입니다.
 
 <!-- 
@@ -160,12 +160,12 @@ Stories are written in a portable format based on standard JavaScript modules. Y
 
 ![](/ui-testing-handbook/portable-stories.jpg)
 
-테스트 사례로 스토리를 작성할 때, 어떤 형태의 주장도 층층이 쌓일 수 있습니다. 한번 해봅시다. `InboxScreen.test.js`파일을 만들고 첫 번째 테스트를 작성해봅시다. 위의 예와 같이 우리는 이러한 테스트에 스토리를 가져와서 Testing-Library에 잇는 'render'기능을 이용해 쌓습니다. 
+테스트 사례로 스토리를 작성할 때, 어떤 형태의 assertion도 스토리의 최상단으로 올려질 수 있습니다. 한번 해봅시다. `InboxScreen.test.js`파일을 만들고 첫 번째 테스트를 작성해봅시다. 위의 예와 같이 우리는 이러한 테스트에 스토리를 가져와서 Testing-Library에 잇는 'render'기능을 이용해 쌓습니다. 
 
 <!-- 
 When you write your test cases as stories, any form of assertion can be layered on top. Let’s try that out. Create the `InboxScreen.test.js` file and write the first test. Like the example above, we are importing a story into this test and mounting it using the `render` function from Testing-Library. -->
 
-그 'it' 블록은 우리의 테스트를 나타낸다.먼저 컴포넌트를 렌더링하고 데이터를 가져올 때까지 기다린 후 특정 작업을 찾아 핀 버튼을 클릭합니다. 확언 문장은 고정된 상태가 업데이트되었는지 확인합니다. 마지막으로 `afterEach` 블록이 테스트 중에 마운트된 리액트 트리들을 마운트 해제하여 정리합니다.
+'it' 블록은 우리의 테스트를 나타냅니다.먼저 컴포넌트를 렌더링하고 데이터를 가져올 때까지 기다린 후 특정 작업을 찾아 핀 버튼을 클릭합니다. 확언 문장은 고정된 상태가 업데이트되었는지 확인합니다. 마지막으로 `afterEach` 블록이 테스트 중에 마운트된 리액트 트리들을 마운트 해제하여 정리합니다.
 
 <!-- 
 The `it` block describes our test. We start by rendering the component, waiting for it to fetch data, finding a particular task, and clicking the pin button. The assertion checks to see if the pinned state has been updated. Finally, the `afterEach` block cleans up by un-mounting React trees mounted during the test. -->
@@ -230,16 +230,16 @@ Run `yarn test` to start up Jest. You’ll notice that the test fails. -->
 
 <!-- ### Component configs to go -->
 
-복잡한 구성요소들은 테마 프로바이더나 컨텍스트와 같은 외부 의존성에 의존해 글로벌 데이터를 공유합니다. Storybook은 [decorators](https://storybook.js.org/docs/react/writing-stories/decorators)을 사용해 스토리를 감싸고 그러한 기능을 제공합니다. 모든 구성과 함께 스토리를 가져오려면 [@storybook/testing-react](https://github.com/storybookjs/testing-react) 라이브러리를 사용합니다.
+복잡한 컴포넌트들은 theme provider나 context 같은 외부 의존성에 기대 전역 데이터를 공유합니다. Storybook은 [decorators](https://storybook.js.org/docs/react/writing-stories/decorators)을 사용해 스토리를 감싸고 그러한 기능을 제공합니다. 모든 구성과 함께 스토리를 가져오려면 [@storybook/testing-react](https://github.com/storybookjs/testing-react) 라이브러리를 사용합니다.
 
 <!-- 
 Complex components rely on external dependencies such as theme providers and context to share global data. Storybook uses [decorators](https://storybook.js.org/docs/react/writing-stories/decorators) to wrap a story and provide such functionality. To import stories along with all their config, we'll use the [@storybook/testing-react](https://github.com/storybookjs/testing-react) library. -->
 
 이 과정은 보통 두 단계로 이루어합니다. 
-우선 글로벌 데코레이터들을 모두 등록해야합니다.
+우선 전역 데코레이터들을 모두 등록해야합니다.
 우리의 경우, 우리에게는 두 데코레이터가 있습니다 -
 Chakra UI 테마를 제공하는 데코레이터와 
-MSW addon을 위한 데코레이터입니다. 두 데코레이터 모두 [`.storybook/preview`](https://github.com/chromaui/ui-testing-guide-code/blob/interaction-testing/.storybook/preview.js) file 파일을 통해 구성됩니다.
+MSW addon을 위한 데코레이터입니다. 두 데코레이터 모두 [`.storybook/preview`](https://github.com/chromaui/ui-testing-guide-code/blob/interaction-testing/.storybook/preview.js) 파일을 통해 구성됩니다.
 
 <!-- 
 This is usually a two-step process. First, we need to register all global decorators. In our case, we have two: a decorator that provides the Chakra UI theme and one for the MSW addon. Both configured via the [`.storybook/preview`](https://github.com/chromaui/ui-testing-guide-code/blob/interaction-testing/.storybook/preview.js) file. -->
@@ -370,7 +370,7 @@ In summary, the setup code lives in the stories file, and the actions and assert
 <!-- ## Catching usability issues -->
 
 모든 사용자가 당신의 UI를 사용할 수 있게되면,비즈니스 재무에 영향을 미치고 [법적 요구사항](https://www.w3.org/WAI/policies/?q=government)을 충족시키게 됩니다.이것은 윈-윈 관계라고 할 수 있습니다. 
-다음 장에서는 스토리들의 이동성을 활용해 접근성을 간소화하는 방법을 보여주려 합니다.
+다음 장에서는 스토리들의 이동성을 활용해 접근성 테스트를 간소화하는 방법을 보여주려 합니다.
 
 <!-- 
 When you ensure your UI is usable to every user, you impact the business financials and satisfy [legal requirements](https://www.w3.org/WAI/policies/?q=government). It’s a win-win. The next chapter demonstrates how you can leverage the portability of stories to simplify accessibility testing. -->
