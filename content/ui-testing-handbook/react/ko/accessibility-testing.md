@@ -8,7 +8,7 @@ description: '통합적인 툴 사용(integrated tooling)으로 빠른 피드백
 commit: '1681de1'
 ---
 
-미국에 있는 [성인의 26%](https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html)는 적어도 하나의 장애를 가지고 있습니다. 접근성을 개선하면, 현재 그리고 미래의 고객들에게 아주 커다란 영향을 미칩니다. 또한 접근성은 법적인 요건이기도 합니다.
+미국에 있는 [성인의 26%](https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html)는 적어도 하나의 장애를 가지고 있습니다. 접근성을 개선하면, 현재 그리고 미래의 고객들에게 아주 커다란 영향을 미칩니다. 또한 접근성은 법적 요구 사항이기도 합니다.
 
 <!-- [26% of adults](https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html) in the US have at least one disability. When you improve accessibility, it has an outsized impact on your current and future customers. It’s also a legal requirement. -->
 
@@ -16,7 +16,7 @@ commit: '1681de1'
 
 <!-- The most accurate way to check accessibility is manually on real devices. But that requires specialized expertise and a lot of time, both of which are scarce on frontend teams. -->
 
-그것이 바로 현재 많은 회사들이 자동과 수동 테스팅을 함께 사용하는 이유입니다. 자동화는 개발자들이 크게 힘쓰지 않으며 일반적인 접근성 문제를 파악합니다.
+그것이 바로 현재 많은 회사들이 자동과 수동 테스팅을 함께 사용하는 이유입니다. 자동화는 개발자들이 크게 공들이지 않아도 일반적인 접근성 문제를 파악합니다.
 수동 QA는 사람의 주의가 필요한 까다로운 문제들을 다루기 위해 준비되어 있습니다.
 
 <!-- That's why many companies now use a combination of automated and manual testing. Automation catches common accessibility issues with low effort from developers. Manual QA is reserved for trickier problems that require human attention. -->
@@ -28,8 +28,8 @@ commit: '1681de1'
 ## 왜 자동화일까요?
 <!-- ## Why automation? -->
 
-시작하기 전에, 일반적인 장애의 유형을 살펴보자 - 시각, 청각, 이동성, 인지, 언어 그리고 신경학적인.
-이러한 사용자 장애로 인해 다음과 같은 앱 요구사항이 발생합니다 -
+시작하기 전에, 일반적인 장애의 유형을 살펴봅시다. - 시각, 청각, 이동성, 인지, 언어 그리고 신경학적인 장애들.
+이러한 사용자 장애들로 인해 다음과 같은 앱 요구사항들이 발생합니다 -
 
 <!-- Before we begin, let’s examine common types of disabilities: visual, hearing, mobility, cognition, speech, and neurological. These user disabilities yield app requirements like: -->
 
@@ -51,11 +51,10 @@ commit: '1681de1'
 
 <!-- In the past, you’d verify each of these requirements by checking every component across a combination of browsers, devices, and screen readers. But that’s impractical to do by hand because apps have dozens of components and are constantly updating the UI. -->
 
-## 자동화가 workflow의 속도를 높여줄 것입니다.
+## 자동화가 작업 흐름(workflow)의 속도를 높여줄 것입니다.
 <!-- ## Automation speeds up your workflow -->
 
-자동화된 도구는 [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) 규칙 및 기타 업계에서 입증된 모범 사례를 기반으로 일련의 휴리스틱에 대해 렌더링된 DOM을 감사합니다. 이들은 노골적인 접근성 위반을 적발하는 QA의 첫번째 라인 역할을 수행합니다. 
--> 여기서 against를 '대해'라고 할지 '반해'라고 할지 고민입니다.
+자동화된 도구는 [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) 규칙 및 기타 업계에서 입증된 모범 사례를 기반으로 일련의 휴리스틱와 비교하여 렌더링된 DOM을 감사합니다. 이들은 노골적인 접근성 위반을 적발하는 QA의 첫번째 라인 역할을 수행합니다. 
 
 <!-- Automated tools audit the rendered DOM against a set of heuristics based on [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) rules and other industry-accepted best practices. They act as the first line of QA to catch blatant accessibility violations. -->
 
@@ -175,7 +174,7 @@ LongTitle.args = {
 
 ![](/ui-testing-handbook/a11y-addon.png)
 
-addon이 어떻게 두개의 위반을 발견했는지 봅시다. 첫 번째,**“전경색과 배경색의 대비가 WCAG 2 AA 대비율 임계값을 충족하는지 확인하기”**는 '보관' 상태에 한정됩니다. 본질적으로 그것은 글과 배경의 대비가 충분하지 않음을 의미합니다. 텍스트 색상을 '회색.400'에서 '회색.600'으로 약간 더 어두운 회색으로 변경함으로써 이 문제를 해결할 수 있습니다.
+addon이 어떻게 두개의 위반을 발견했는지 봅시다. 첫 번째,**“전경색과 배경색의 대비가 WCAG 2 AA 대비율 임계값을 충족하는지 확인하기”**는 '보관' 상태에 한정됩니다. 본질적으로 그것은 글과 배경의 대비가 충분하지 않음을 의미합니다. 텍스트 색상을 'gray.400'에서 'gray.600'으로 약간 더 어두운 회색으로 변경함으로써 이 문제를 해결할 수 있습니다.
 
 <!-- Notice how the addon found two violations. The first, **“Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds,”** is specific to the `archived` state. Essentially what it means is that there isn’t enough contrast between the text and the background. We can fix that by changing the text color to a slightly darker gray—from `gray.400` to `gray.600`. -->
 
