@@ -39,7 +39,7 @@ As you build more complex UIs like pages, components become responsible for more
 <!-- 
 ## Does that component really work? -->
 
-컴포넌트의 주요 작업은 prop들을 받아서 한 조각의 UI으로 렌더링하는 것입니다. 더 복잡한 컴포넌트들은 application의 상태를 추적하기도 하며 application의 동작들을 컴포넌트 트리 아래로 전달합니다.
+컴포넌트의 주요 임무는 prop들을 받아서 한 조각의 UI으로 렌더링하는 것입니다. 더 복잡한 컴포넌트들은 application의 상태를 추적하기도 하며 application의 동작들을 컴포넌트 트리 아래로 전달합니다.
 
 <!-- 
 A component's primary task is to render a piece of the UI given a set of props. More complex components also track application state and pass behaviours down the component tree. -->
@@ -51,7 +51,7 @@ user가 입력창에 무언가를 타이핑하거나 버튼을 클릭할 때, �
 <!-- 
 For example, a component will start with an initial state. When the user types something in an input field or clicks a button, it triggers an event within the app. The component updates state in response to this event. Those state changes then update the rendered UI. That's the complete cycle for an interaction. -->
 
-`InboxScreen`에서, 사용자는 업무를 고정시키기 위해 별 아이콘을 클릭할 수 있습니다. 혹은 checkbox를 클릭해 업무를 보관할 수 있습니다. 시각적 테스트들은 컴포넌트가 이러한 모든 상태 안에서 올바르게 보이는지 확인합니다. 또한 우리는 UI가 이와 같은 상호 작용에 정확히 응답하는지 확인해야합니다.
+`InboxScreen`에서, 사용자는 일정을 고정시키기 위해 별 아이콘을 클릭할 수 있습니다. 혹은 checkbox를 클릭해 업무를 보관할 수 있습니다. 시각적 테스트들은 컴포넌트가 이러한 모든 상태 안에서 올바르게 보이는지 확인합니다. 또한 우리는 UI가 이와 같은 상호 작용에 정확히 응답하는지 확인해야합니다.
 
 <!-- 
 On the `InboxScreen`, the user can click on the star icon to pin a task. Or click on the checkbox to archive it. Visual tests ensure that the component looks right in all those states. We also need to ensure that the UI is responding to those interactions correctly. -->
@@ -95,7 +95,8 @@ The Taskbox app was bootstrapped using Create React App, which comes pre-configu
 <!-- 
 Much like unit tests, we want to avoid testing the inner workings of a component. This makes tests brittle because any time you refactor code it'll break the tests, regardless of whether the output changed or not. Which in turn slows you down. -->
 
- 그게 바로 Adobe, Twilio, Gatsby 그리고 더 많은 회사의 팀들이 [Testing-Library](https://testing-library.com/)를 사용하는 이유입니다.[Testing-Library]은 렌더링된 결과물을 평가할 수 있게 합니다.
+ 그게 바로 Adobe, Twilio, Gatsby 그리고 더 많은 회사의 팀들이 [Testing-Library](https://testing-library.com/)를 사용하는 이유입니다.Testing-Library 은 렌더링된 결과물을 평가할 수 있게 합니다.
+ 이는 가상 브라우저(JSDOM)에 구성 요소를 마운트하여 작동하며 사용자 인터랙션을 복제하는 유틸리티를 제공합니다.
 
 <!-- 
 This is why teams at Adobe, Twilio, Gatsby and many more use [Testing-Library](https://testing-library.com/). It allows you to evaluate the rendered output. It works by mounting the component in a virtual browser (JSDOM) and provides utilities that replicate user interactions. -->
@@ -105,7 +106,7 @@ This is why teams at Adobe, Twilio, Gatsby and many more use [Testing-Library](h
 <!-- 
 We can write tests that mimic real-world usage, instead of accessing a component’s internal state and methods. And writing tests from the user’s perspective gives us a lot more confidence that our code works. -->
 
-## 스토리들을 상호작용 테스트 사례로 재사용하자
+## story들을 상호작용 테스트 사례로 재사용하자
 
 <!-- 
 ## Reuse stories as interaction test cases -->
@@ -150,8 +151,8 @@ Error.parameters = {
   ],
 };
 ```
-스토리는 표준 자바스크립트 모듈을 기반으로 하며 이동가능한 형식으로 작성됩니다. 
-어떤 자바스크립트 기반의 테스트 라이브러리(Jest, Testing Lib, Playwright)와도 함께 스토리들을 재사용할 수 있습니다.
+Story는 표준 자바스크립트 모듈을 기반으로 하며 이동가능한 형식으로 작성됩니다. 
+어떤 자바스크립트 기반의 테스트 라이브러리(Jest, Testing Lib, Playwright)와도 함께 story들을 재사용할 수 있습니다.
 따라서 제품군의 각 테스트 도구에 대한 테스트 사례를 설정하고 유지관리할 필요가 없습니다. 예를 들어, Adobe Spectrum 디자인설계 팀은 이러한 패턴을 사용해 메뉴와 대화 상자 컴포넌트에 대한 [상호작용 테스트]
 (https://github.com/adobe/react-spectrum/blob/f6c06605243ad2033fce95f80ae3fecd4a38daeb/packages/%40react-spectrum/dialog/test/DialogContainer.test.js#L62)를 수행합니다. 
 
@@ -160,12 +161,12 @@ Stories are written in a portable format based on standard JavaScript modules. Y
 
 ![](/ui-testing-handbook/portable-stories.jpg)
 
-테스트 사례로 스토리를 작성할 때, 어떤 형태의 assertion도 스토리의 최상단으로 올려질 수 있습니다. 한번 해봅시다. `InboxScreen.test.js`파일을 만들고 첫 번째 테스트를 작성해봅시다. 위의 예와 같이 우리는 이러한 테스트에 스토리를 가져와서 Testing-Library에 잇는 'render'기능을 이용해 쌓습니다. 
+테스트 사례로 story를 작성할 때, 어떤 형태의 assertion도 story의 최상단으로 올려질 수 있습니다. 한번 해봅시다. `InboxScreen.test.js`파일을 만들고 첫 번째 테스트를 작성해봅시다. 위의 예와 같이 우리는 이러한 테스트에 story를 가져와서 Testing-Library에 잇는 'render'기능을 이용해 쌓습니다. 
 
 <!-- 
 When you write your test cases as stories, any form of assertion can be layered on top. Let’s try that out. Create the `InboxScreen.test.js` file and write the first test. Like the example above, we are importing a story into this test and mounting it using the `render` function from Testing-Library. -->
 
-'it' 블록은 우리의 테스트를 나타냅니다.먼저 컴포넌트를 렌더링하고 데이터를 가져올 때까지 기다린 후 특정 작업을 찾아 핀 버튼을 클릭합니다. 확언 문장은 고정된 상태가 업데이트되었는지 확인합니다. 마지막으로 `afterEach` 블록이 테스트 중에 마운트된 리액트 트리들을 마운트 해제하여 정리합니다.
+'it' 블록은 우리의 테스트를 나타냅니다.먼저 컴포넌트를 렌더링하고 데이터를 가져올 때까지 기다린 후 특정 작업을 찾아 핀 버튼을 클릭합니다. assertion은 고정된 상태가 업데이트되었는지 확인합니다. 마지막으로 `afterEach` 블록이 테스트 중에 마운트된 리액트 트리들을 마운트 해제하여 정리합니다.
 
 <!-- 
 The `it` block describes our test. We start by rendering the component, waiting for it to fetch data, finding a particular task, and clicking the pin button. The assertion checks to see if the pinned state has been updated. Finally, the `afterEach` block cleans up by un-mounting React trees mounted during the test. -->
@@ -230,7 +231,7 @@ Run `yarn test` to start up Jest. You’ll notice that the test fails. -->
 
 <!-- ### Component configs to go -->
 
-복잡한 컴포넌트들은 theme provider나 context 같은 외부 의존성에 기대 전역 데이터를 공유합니다. Storybook은 [decorators](https://storybook.js.org/docs/react/writing-stories/decorators)을 사용해 스토리를 감싸고 그러한 기능을 제공합니다. 모든 구성과 함께 스토리를 가져오려면 [@storybook/testing-react](https://github.com/storybookjs/testing-react) 라이브러리를 사용합니다.
+복잡한 컴포넌트들은 theme provider나 context 같은 외부 의존성에 기대 전역 데이터를 공유합니다. Storybook은 [decorators](https://storybook.js.org/docs/react/writing-stories/decorators)을 사용해 story를 감싸고 그러한 기능을 제공합니다. 모든 구성과 함께 story를 가져오려면 [@storybook/testing-react](https://github.com/storybookjs/testing-react) 라이브러리를 사용합니다.
 
 <!-- 
 Complex components rely on external dependencies such as theme providers and context to share global data. Storybook uses [decorators](https://storybook.js.org/docs/react/writing-stories/decorators) to wrap a story and provide such functionality. To import stories along with all their config, we'll use the [@storybook/testing-react](https://github.com/storybookjs/testing-react) library. -->
@@ -259,7 +260,7 @@ setGlobalConfig(globalStorybookConfig);
 ```
 
 이어서, 테스트를 업데이트하여 `@storybook/testing-react`에서 `composeStories` 유틸리티를 사용합니다.
-이 테스트는 모든 데코레이터가 적용된 스토리들을 1:1 map으로 치환합니다. 
+이 테스트는 모든 데코레이터가 적용된 story들을 1:1 map으로 치환합니다. 
 그러면 짜잔, 우리의 테스트는 통과했습니다!
 
 <!-- 
@@ -311,7 +312,7 @@ describe('InboxScreen', () => {
   });
 });
 ```
-우리는 Testing Library을 이용해 스토리를 올리고 렌더링하는 테스트를 성공적으로 작성했습니다. 그 후 시뮬레이션된 유저 동작을 적용하고 해당 컴포넌트의 상태가 정확히 업데이트 되었는지 확인합니다.
+우리는 Testing Library을 이용해 story를 올리고 렌더링하는 테스트를 성공적으로 작성했습니다. 그 후 시뮬레이션된 유저 동작을 적용하고 해당 컴포넌트의 상태가 정확히 업데이트 되었는지 확인합니다.
 
 <!-- 
 We’ve successfully written a test that loads up a story and renders it using Testing Library. Which then applies simulated user behaviour and checks to see if the component state is updated accurately or not. -->
@@ -357,7 +358,7 @@ it('should edit a task', async () => {
   expect(taskInput.value).toBe(updatedTaskName);
 });
 ```
-요약하면, 설정 코드는 스토리안에 존재하고, 액션과 명령들은 테스트 파일안에 존재합니다. 코드들은 Testing Library을 사용해 사용자의 방식으로 UI와 상호작용합니다.
+요약하면, 설정 코드는 story안에 존재하고, 액션과 명령들은 테스트 파일안에 존재합니다. 코드들은 Testing Library을 사용해 사용자의 방식으로 UI와 상호작용합니다.
 향후 컴포넌트 구현이 변경되면, 결과물이나 동작이 수정될 때에만 테스트가 중단될 것입니다.
 
 <!-- 
@@ -370,7 +371,7 @@ In summary, the setup code lives in the stories file, and the actions and assert
 <!-- ## Catching usability issues -->
 
 모든 사용자가 당신의 UI를 사용할 수 있게되면,비즈니스 재무에 영향을 미치고 [법적 요구사항](https://www.w3.org/WAI/policies/?q=government)을 충족시키게 됩니다.이것은 윈-윈 관계라고 할 수 있습니다. 
-다음 장에서는 스토리들의 이동성을 활용해 접근성 테스트를 간소화하는 방법을 보여주려 합니다.
+다음 장에서는 story들의 이동성을 활용해 접근성 테스트를 간소화하는 방법을 보여주려 합니다.
 
 <!-- 
 When you ensure your UI is usable to every user, you impact the business financials and satisfy [legal requirements](https://www.w3.org/WAI/policies/?q=government). It’s a win-win. The next chapter demonstrates how you can leverage the portability of stories to simplify accessibility testing. -->

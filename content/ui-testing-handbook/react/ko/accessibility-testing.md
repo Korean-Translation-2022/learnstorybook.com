@@ -51,8 +51,8 @@ commit: '1681de1'
 
 <!-- In the past, you’d verify each of these requirements by checking every component across a combination of browsers, devices, and screen readers. But that’s impractical to do by hand because apps have dozens of components and are constantly updating the UI. -->
 
-## 자동화가 작업 흐름(workflow)의 속도를 높여줄 것입니다.
-<!-- ## Automation speeds up your workflow -->
+## 자동화가 작업 흐름(작업 흐름)의 속도를 높여줄 것입니다.
+<!-- ## Automation speeds up your 작업 흐름 -->
 
 자동화된 도구는 [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) 규칙 및 기타 업계에서 입증된 모범 사례를 기반으로 일련의 휴리스틱와 비교하여 렌더링된 DOM을 감사합니다. 이들은 노골적인 접근성 위반을 적발하는 QA의 첫번째 라인 역할을 수행합니다. 
 
@@ -62,35 +62,35 @@ commit: '1681de1'
 
 <!-- For example, Axe, on average, finds [57% of WCAG issues automatically](https://www.deque.com/blog/automated-testing-study-identifies-57-percent-of-digital-accessibility-issues/). That allows teams to focus their expert resources on the more complex issues that require manual review. -->
 
-대부분의 기존 테스트 환경과 통합되므로 [Axe library](https://github.com/dequelabs/axe-core)를 사용하는 팀이 많습니다. 예를 들어, the [Twilio Paste](https://github.com/twilio-labs/paste) 팀은 [jest-axe integration](https://github.com/twilio-labs/paste/blob/cd0ddad508e41cb9982a693a5160f1b7866f4e2a/packages/paste-core/components/checkbox/__tests__/checkboxdisclaimer.test.tsx#L40)를 사용합니다. 반면 Shopify Polaris & Adobe Spectrum 팀들은 [Storybook addon](https://storybook.js.org/addons/@storybook/addon-a11y) 버전을 사용합니다. 
+대부분의 기존 테스트 환경과 통합되므로 [Axe library](https://github.com/dequelabs/axe-core)를 사용하는 팀이 많습니다. 예를 들어, [Twilio Paste](https://github.com/twilio-labs/paste) 팀은 [jest-axe integration](https://github.com/twilio-labs/paste/blob/cd0ddad508e41cb9982a693a5160f1b7866f4e2a/packages/paste-core/components/checkbox/__tests__/checkboxdisclaimer.test.tsx#L40)를 사용합니다. 반면 Shopify Polaris & Adobe Spectrum 팀들은 [Storybook addon](https://storybook.js.org/addons/@storybook/addon-a11y) 버전을 사용합니다. 
 
 <!-- Many teams use the [Axe library](https://github.com/dequelabs/axe-core) because it integrates with most existing test environments. For example, the [Twilio Paste](https://github.com/twilio-labs/paste) team uses the [jest-axe integration](https://github.com/twilio-labs/paste/blob/cd0ddad508e41cb9982a693a5160f1b7866f4e2a/packages/paste-core/components/checkbox/__tests__/checkboxdisclaimer.test.tsx#L40). Whereas the Shopify Polaris & Adobe Spectrum teams use the [Storybook addon](https://storybook.js.org/addons/@storybook/addon-a11y) version. -->
 
-Stroybook 애드온은 (jsdom for Jest와는 반대로) 브라우저에서 검사를 실행하므로 낮은 대비와 같은 문제들을 발견할 수 있습니다. 하지만 각 스토리를 수동으로 확인해야 합니다.
+Storybook 애드온은 (jsdom for Jest와는 반대로) 브라우저에서 검사를 실행하므로 낮은 대비와 같은 문제들을 발견할 수 있습니다. 하지만 각 story를 수동으로 확인해야 합니다.
 
 <!-- The Storybook addon runs checks in the browser (as opposed to jsdom for Jest) and can therefore catch issues such as low contrast. However, it does require you to manually verify each story. -->
 
-## 접근성 테스팅 workflow
-<!-- ## Accessibility testing workflow -->
+## 접근성 테스팅 작업 흐름
+<!-- ## Accessibility testing 작업 흐름 -->
 
-개발 프로세스 전반에 걸쳐 이러한 검사를 실행하면 피드백 루프를 단축하고 문제를 더 빠르게 해결할 수 있습니다. workflow의 모양은 다음과 같습니다.
-<!-- By running these checks throughout the development process, you shorten the feedback loop and fix issues faster. Here’s what the workflow looks like: -->
+개발 프로세스 전반에 걸쳐 이러한 검사를 실행하면 피드백 루프를 단축하고 문제를 더 빠르게 해결할 수 있습니다. 작업 흐름의 모양은 다음과 같습니다.
+<!-- By running these checks throughout the development process, you shorten the feedback loop and fix issues faster. Here’s what the 작업 흐름 looks like: -->
 
-1.  👨🏽‍💻 **개발 중:** 스토리북을 사용하여 한 번에 하나의 컴포넌트에 집중할 수 있습니다. A11y addon을 사용해 비전 결함을 시뮬레이션하고 컴포넌트 레벨에서 접근성 검사를 실행합니다.
+1.  👨🏽‍💻 **개발 중:** Storybook을 사용하여 한 번에 하나의 컴포넌트에 집중할 수 있습니다. A11y addon을 사용해 비전 결함을 시뮬레이션하고 컴포넌트 레벨에서 접근성 검사를 실행합니다.
 2.  ✅ **QA의 경우:** Axe 검사를 기능 테스트 파이프라인에 통합합시다. 모든 컴포넌트를 검사해 회귀를 탐지합니다. 
 
 <!-- 1.  👨🏽‍💻 **During development:** use Storybook to focus on one component at a time. Use the A11y addon to simulate vision defects and run an accessibility audit at the component level.
 2.  ✅ **For QA:** integrate the Axe audit into your functional testing pipeline. Run checks on all components to catch regressions. -->
 
-![](/ui-testing-handbook/a11y-workflow.png)
+![](/ui-testing-handbook/a11y-작업 흐름.png)
 
-이 workflow를 살펴보겠습니다.
-<!-- Let’s see this workflow in action. -->
+이 작업 흐름을 살펴보겠습니다.
+<!-- Let’s see this 작업 흐름 in action. -->
 
 ### 접근성 addon을 설치해보자
 <!-- ### Install the accessibility addon -->
 
-Storybook의 접근성은 활성 스토리에 Axe를 실행합니다. 테스트 결과를 패널에 시각화하고 규칙을 위반한 모든 DOM 노드를 추려서 나타냅니다. 
+Storybook의 접근성은 활성 story에 Axe를 실행합니다. 테스트 결과를 패널에 시각화하고 규칙을 위반한 모든 DOM 노드를 추려서 나타냅니다. 
 Storybook’s Accessibility runs Axe on the active story. It visualizes the test results in a panel and outlines all DOM nodes that have a violation.
 
 ![](/ui-testing-handbook/a11y-testing.gif)
@@ -113,7 +113,7 @@ module.exports = {
 ### 작성한대로 접근성 테스트하기 
 <!-- ### Testing accessibility as you code -->
 
-우리는 이미 작업 컴포넌트를 [격리](../visual-testing/)했고 해당 사용 사례를 모두 스토리로 캡쳐했습니다. 개발 단계에서 이러한 사례를 순환하여 접근성 문제를 발견할 수 있습니다.
+우리는 이미 작업 컴포넌트를 [격리](../visual-testing/)했고 해당 사용 사례를 모두 story로 캡쳐했습니다. 개발 단계에서 이러한 사례를 순환하여 접근성 문제를 발견할 수 있습니다.
 
 <!-- We've already [isolated](../visual-testing/) the Task component and captured all its use cases as stories. During the development phase, you can cycle through these stories to spot accessibility issues. -->
 
@@ -160,7 +160,7 @@ Archived.args = {
   },
 };
 
-const longTitleString = `This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`;
+const longTitleString = `이 일정의 이름은 어마어마하게 길어요. 지금처럼 계속 길어지다가는 내용이 넘칠 수도 있을 것 같습니다. 이렇게 되면 무슨 일이 일어날까요? 고정된 일정을 나타내는 별 모양 아이콘에 텍스트가 겹칠 수도 있습니다. 아니면 아이콘에 도달했을 때 텍스트가 갑자기 잘릴 수도 있겠죠. 부디 그렇지 않기를 바랍니다!`
 
 export const LongTitle = Template.bind({});
 LongTitle.args = {
@@ -231,7 +231,7 @@ Task.propTypes = {
  onEditTitle: PropTypes.func.isRequired,
 };
 ```
-두 번째 위반인 **“`<li>` 요소가 의미있게 사용되도록 하기”**는 DOM 구조가 잘못되었음을 나타냅니다. 작업 컴포넌트는 `<li>` 요소를 렌더링합니다. 하지만 스토리안에서 `<li>` 요소가 자신을 sementic하게 만들어주는  `<ul>` 로 감싸지지 않았습니다. 이 스토리들은 작업 컴포넌트를 위한 것입니다. `<ul>`은 사실 TaskList에 의해 제공됩니다. 따라서 DOM 구조는 TaskList 스토리들 안에서 유효합니다. 그러므로 이 오류는 무시해도 무방합니다. 말하자면, 우리는 모든 작업 스토리에 대한 이러한 규칙을 비활성화할 수 있습니다.
+두 번째 위반인 **“`<li>` 요소가 의미있게 사용되도록 하기”**는 DOM 구조가 잘못되었음을 나타냅니다. 작업 컴포넌트는 `<li>` 요소를 렌더링합니다. 하지만 story안에서 `<li>` 요소가 자신을 sementic하게 만들어주는  `<ul>` 로 감싸지지 않았습니다. 이 story들은 작업 컴포넌트를 위한 것입니다. `<ul>`은 사실 TaskList에 의해 제공됩니다. 따라서 DOM 구조는 TaskList story들 안에서 유효합니다. 그러므로 이 오류는 무시해도 무방합니다. 말하자면, 우리는 모든 Task story에 대한 이러한 규칙을 비활성화할 수 있습니다.
 
 <!-- The second violation, **“Ensures `<li>` elements are used semantically,”** indicates that the DOM structure is incorrect. The Task component renders an `<li>` element. However, it's not wrapped with a `<ul>` in its stories. Which makes sense. These stories are for the Task component. The `<ul>` is actually provided by the TaskList. So the DOM structure gets validated in the TaskList stories. Therefore, it's safe to ignore this error. In fact, we can go ahead and disable this rule for all the Task stories. -->
 
@@ -262,19 +262,19 @@ export default {
 이제 다른 모든 컴포넌트에도 이 프로세스를 반복할 수 있습니다.
 <!-- You can now repeat this process for all other components. -->
 
-접근성 테스팅을 Storybook에 통합하면 개발 workflow를 간소화할 수 있습니다. 컴포넌트에서 작업할 때 다른 툴들 사이를 이동할 필요가 없습니다. 필요한 건 바로 여기 브라우저에 있습니다. 중염색체(제2색약),원형종(제1색약) 또는 청황 색맹 같은 시각적 장애도 시뮬레이션이 가능합니다.
-<!-- Integrating accessibility testing into Storybook streamlines your development workflow. You don’t have to jump between different tools while working on a component. Everything you need is right there in the browser. You can even simulate visual impairments such as deuteranomaly, protanomaly or tritanopia. -->
+접근성 테스팅을 Storybook에 통합하면 개발 작업 흐름을 간소화할 수 있습니다. 컴포넌트에서 작업할 때 다른 툴들 사이를 이동할 필요가 없습니다. 필요한 건 바로 여기 브라우저에 있습니다. 중염색체(제2색약),원형종(제1색약) 또는 청황 색맹 같은 시각적 장애도 시뮬레이션이 가능합니다.
+<!-- Integrating accessibility testing into Storybook streamlines your development 작업 흐름. You don’t have to jump between different tools while working on a component. Everything you need is right there in the browser. You can even simulate visual impairments such as deuteranomaly, protanomaly or tritanopia. -->
 
 ![](/ui-testing-handbook/vision-simulator.png)
 
 ### 회귀 방지
 <!-- ### Preventing regressions -->
 
-컴포넌트는 상호의존적이며 - 한 컴포넌트의 변화가 사고로 다른 컴포넌트를 파괴할 수 있습니다. 접근성 위반이 발생하지 않도록 하려면, 변경사항을 병합하기 전에 모든 컴포넌트에 Axe를 실행해야 합니다.
+컴포넌트는 상호의존적이며 - 한 컴포넌트의 변화가 우연히 다른 컴포넌트를 파괴할 수 있습니다. 접근성 위반이 발생하지 않도록 하려면, 변경사항을 병합하기 전에 모든 컴포넌트에 Axe를 실행해야 합니다.
 
 <!-- Components are interdependent – changes in one component could break others by accident. To ensure that accessibility violations aren’t introduced, we need to run Axe on all our components before merging changes. -->
 
-스토리는 ES6 모듈을 기반으로 작성되므로 다른 테스트 프레임워크와 함께 재사용할 수 있습니다. 마지막 장에서는, [stories into Jest](../interaction-testing/)가져오기 및 테스팅 라이브러리와의 상호작용에 대해 살펴보았습니다. 마찬가지로 [Jest Axe integration](https://github.com/nickcolley/jest-axe)를 사용해 컴포넌트에 대한 접근성 테스트를 실행할 수 있습니다.
+Story는 ES6 모듈을 기반으로 작성되므로 다른 테스트 프레임워크와 함께 재사용할 수 있습니다. 마지막 장에서는, [stories into Jest](../interaction-testing/)가져오기 및 테스팅 라이브러리와의 인터랙션에 대해 살펴보았습니다. 마찬가지로 [Jest Axe integration](https://github.com/nickcolley/jest-axe)를 사용해 컴포넌트에 대한 접근성 테스트를 실행할 수 있습니다.
 
 <!-- Stories are written in a format based on ES6 modules, allowing you to reuse them with other testing frameworks. In the last chapter, we looked at importing [stories into Jest](../interaction-testing/) and verifying interactions with Testing Library. Similarly, we can use the [Jest Axe integration](https://github.com/nickcolley/jest-axe) to run accessibility tests on the component. -->
 
@@ -333,7 +333,7 @@ describe('InboxScreen', () => {
   it('should edit a task', async () => { ... });
 });
 ```
-`yarn test`를 실행하여 Jest를 시작합니다. 모든 상호작용 테스트를 실행하고 접근성 검사도 실행합니다. 이제 코드를 수정할 때마다 이 전체 테스트 세트를 실행할 수 있습니다. 회귀도 탐색해주면서요.
+`yarn test`를 실행하여 Jest를 시작합니다. 모든 인터랙션 테스트를 실행하고 접근성 검사도 실행합니다. 이제 코드를 수정할 때마다 이 전체 테스트 세트를 실행할 수 있습니다. 회귀도 탐색해주면서요.
 
 <!-- Run `yarn test` to start up Jest. It'll execute all the interaction tests and run the accessibility audit too. You can now run this entire test suite any time you modify the code. Allowing you to catch regressions. -->
 
