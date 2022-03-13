@@ -77,4 +77,4 @@ $ git commit -m "first commit"
 $ git branch -M main
 ```
 
-우리의 첫 번째 컴포넌트 만들어봅시다!
+우리의 첫 번째 컴포넌트를 만들어봅시다!
