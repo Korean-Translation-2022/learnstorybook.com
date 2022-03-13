@@ -59,7 +59,7 @@ description: 'A guide to the latest production-ready tools for design systems'
 
 - 🚥 [GitHub Actions](https://github.com/features/actions): 빌드와 테스트를 자동화하기 위해 사용합니다.
 - 📐 [ESLint](https://eslint.org/): 자바스크립트 코드 포맷팅에 사용합니다.
-- ✅ [Chromatic](https://chromatic.com): 컴포넌트에서 일어나는 오류를 시각적으로 발견할 수 있습니다(Storybook 메인테이너들이 제작함).
+- ✅ [Chromatic](https://chromatic.com): 컴포넌트에서 일어나는 오류를 시각적으로 발견할 수 있습니다(Storybook 메인테이너들이 제작).
 - 🃏 [Jest](https://jestjs.io/): 유닛 테스트에 사용합니다.
 - 📦 [npm](https://npmjs.com): 배포 및 라이브러리 관리에 사용합니다.
 - 🛠 [Auto](https://github.com/intuit/auto): 릴리즈 워크플로우를 관리할 때 사용합니다.

@@ -46,7 +46,7 @@ yarn add --dev prettier
 
 ![Prettier addon for VSCode](/design-systems-for-developers/prettier-addon.png)
 
-아직 설정을 하지 않았다면, Preference 설정에서 'format on save'를 활성화하는 것을 추천합니다. Prettier를 한 번 설치한 이후에는 파일을 저장할 때마다 에디터가 코드 형식을 자동으로 정리해 줄 것입니다.
+`editor.formatOnSave`  형식을 활성화 해보세요, 아직 설정을 하지 않았다면, Preference 설정에서 'format on save'를 활성화하는 것을 추천합니다. Prettier를 한 번 설치한 이후에는 파일을 저장할 때마다 에디터가 코드 형식을 자동으로 정리해 줄 것입니다.
 
 
 <!-- ## Install Storybook
@@ -80,7 +80,7 @@ npx sb init
 yarn storybook
 ```
 
-다음과 같은 화면을 볼 수있을 것 입니다.
+다음과 같은 화면을 볼 수 있을 것 입니다.
 
 ![Initial Storybook UI](/design-systems-for-developers/storybook-initial-6-0.png)
 
@@ -332,7 +332,7 @@ export default {
 };
 
 // Other Button stories
-//이외의 버튼 story들
+// 이외의 버튼 story들
 
 + // New story using the play function
 + // play 함수를 사용하는 새로운 story 
@@ -355,7 +355,7 @@ export default {
 ```
 
 <!-- <div class="aside">
- 💡 Play functions are small snippets of code that once the story finishes rendering, aided by the <code>addon-interactions</code>, it allows you to test scenarios otherwise impossible without human intervention. Read more about them in the <a href="https://storybook.js.org/docs/react/writing-stories/play-function"> official documentation</a>.
+ 💡 Play functions are small snippets of code that once the story finishes rendering, aided by the <code>addon-interactions</code>, it allows you to test scenarios otherwise impossible without human intervention. Read more about them in the <a href="https://storybook.js.org/docs/react/writing-제작/play-function"> official documentation</a>.
 </div> -->
 
 <div class="aside">
