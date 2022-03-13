@@ -15,7 +15,7 @@ description: '간단한 컴포넌트를 독립적으로 만들어봅시다'
 - `title` – task를 설명해 주는 문자열
 - `state` - 현재 어떤 task가 목록에 있으며, 선택되어 있는지의 여부
 
-`Task` 컴포넌트를 만들기 시작할 때 먼저 위에서 살펴본 여러 유형의 task에 해당하는 테스트 상태(satate)를 작성합니다. 그런 다음 모의(mocked) 데이터를 사용하여 독립적 환경에서 컴포넌트를 구축하기 위해 Storybook을 사용합니다. 각각의 state에 따라 컴포넌트의 모습을 수동으로 테스트합니다.
+`Task` 컴포넌트를 만들기 시작할 때 먼저 위에서 살펴본 여러 유형의 task에 해당하는 테스트 상태(state)를 작성합니다. 그런 다음 모의(mocked) 데이터를 사용하여 독립적 환경에서 컴포넌트를 구축하기 위해 Storybook을 사용합니다. 각각의 state에 따라 컴포넌트의 모습을 수동으로 테스트합니다.
 
 ## 설정하기
 
@@ -100,7 +100,7 @@ Storybook에게 우리가 문서화하고 있는 컴포넌트에 대해 알려�
 우리 컴포넌트의 순열(permutations)이 여러 개이므로 `Template` 변수에 할당하는 것이 편리합니다. 이 패턴을 스토리에 도입함으로써 작성하고 유지해야 하는 코드의 양이 줄어듭니다.
 
 <div class="aside">
-💡 `Template.bind({})`는 함수의 복사본을 만드는 [표준 JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)의 기술입니다. 우리는 이 기술을 사용하여 내보낸(exported) 각각의 스토리가 고유한 속성(properties)을 갖지만 동시에 동일한 구현을 사용합니다.
+💡 `Template.bind({})`는 함수의 복사본을 만드는 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">표준 JavaScript</a>의 기술입니다. 우리는 이 기술을 사용하여 내보낸(exported) 각각의 스토리가 고유한 속성(properties)을 갖지만 동시에 동일한 구현을 사용합니다.
 </div>
 
 인수(arguments) 또는 간단히 줄여서 [`args`](https://storybook.js.org/docs/react/writing-stories/args/)를 사용하면 Storybook을 다시 시작하지 않고도 Controls addon으로 컴포넌트를 실시간으로 수정할 수 있습니다. [`args`](https://storybook.js.org/docs/react/writing-stories/args/)의 값이 변하면 컴포넌트도 함께 변경됩니다.
