@@ -6,7 +6,7 @@ commit: '109652d'
 
 <!-- Now that the basics are covered let’s jump into the details. This example demonstrates building out a state of a `CommentList` component using **Visual TDD** with Storybook. -->
 
-이제 기본기는 다 다뤘으니, 더 세부적인 이야기로 뛰어들어가봅시다. 이 예시에는 `CommentList` 컴포넌트의 상태 하나를 스토리북을 이용한 **Visual TDD**를 이용해 만드는 걸 보이겠습니다.
+이제 기본기는 다 다뤘으니, 더 세부적인 이야기로 뛰어들어가봅시다. 이 예시에서는 스토리북을 이용한 **Visual TDD**로 `CommentList` 컴포넌트의 상태 하나를 만드는 과정을 보여드리겠습니다.
 
 <!-- 1. Build visual test cases -->
 <!-- 2. Check the tests in Storybook -->
@@ -16,7 +16,7 @@ commit: '109652d'
 
 1. 시각적 테스트 케이스 구축하기
 2. Storybook의 테스트를 검토하기
-3. 구현을 만들기
+3. 구현을 구축하기
 4. 디자인을 가지고 구현을 검토하기
 5. 반복
 
@@ -25,7 +25,7 @@ commit: '109652d'
 
 <!-- `CommentList` is part of a chat tool for galactic freedom fighters. Our designer has handed us a design for the various ways the list of comments should look based on the data and the app's state. Our job is to ensure the list renders correctly in terms of the exact text, images displayed, and visual treatment. -->
 
-`CommentList`는 galactic freedom fighters의 채팅 도구의 일부분입니다. 우리 디자이너가 건네준 다양한 디자인을 보고 데이터와 앱의 상태에 따라 댓글 목록이 어떻게 보여야 하는지 알 수 있습니다. 우리가 할 일은 목록이 텍스트, 보여지는 이미지, 시각적인 처리를 올바르게 렌더하는지 보장하는 겁니다.
+`CommentList`는 galactic freedom fighters의 채팅 도구의 일부분입니다. 우리 디자이너는 데이터와 앱의 상태를 바탕으로 댓글 목록이 보여야 할 다양한 방법을 디자인해서 우리에게 주었습니다. 우리가 할 일은 목록이 텍스트, 보여지는 이미지, 시각적인 처리를 올바르게 렌더하는지 보장하는 겁니다.
 
 ![Commentlist design spec](/visual-testing-handbook/visual-testing-handbook-commentlist-design-optimized.png)
 
@@ -33,7 +33,7 @@ commit: '109652d'
 ### 1. 시각적 테스트 케이스 만들기
 
 <!-- Start visual TDD by building test cases. We’ll create three cases that match the three images above. A strict TDD-er would say we need to develop and implement one test case at a time; it’s up to you if you think this helps your process. -->
-시각적 TDD를 테스트케이스를 만들면서 시작해봅시다. 우리는 세 가지 케이스를 만드는데 각각 위에 있는 세 가지 이미지에 대응합니다. 엄격한 TDD-er 는 아마 한 번에 한 가지 테스트 케이스를 만들고 구현해야 한다고 말하겠지만; 이게 여러분에게 정말 도움이 되는지는 스스로 생각하고 결정하면 됩니다.
+테스트케이스를 만들면서 시각적 TDD를 시작해봅시다. 우리는 세 가지 케이스를 만드는데 각각 위에 있는 세 가지 이미지에 대응합니다. 엄격한 TDD-er 는 아마 한 번에 한 가지 테스트 케이스를 만들고 구현해야 한다고 말하겠지만; 이게 여러분에게 정말 도움이 되는지는 스스로 생각하고 결정하면 됩니다.
 
 <!-- Let's set up the example project using [degit](https://github.com/Rich-Harris/degit) to download the necessary boilerplate templates (partially built applications with some default configuration). Run the following commands: -->
 예시 프로젝트를 [degit](https://github.com/Rich-Harris/degit)을 이용해서 설정하고, 필요한 보일러플레이트 템플릿(기본 설정을 가지고 일부만 만들어진 어플리케이션)을 다운 받습니다. 다음 명령어(commands)를 실행해보세요.
@@ -200,7 +200,7 @@ yarn storybook
     type="video/mp4"/>
 </video>
 
-### 3. 구현을 만들기
+### 3. 구현을 구축하기
 
 <!-- So far, we scaffolded a rudimentary implementation then setup Storybook to render our test cases. It’s time to start building an implementation of the `HasData` variation in isolation. -->
 일단, 기본적인 구현의 비계(scaffolded)를 세웠고 Storybook을 셋업해서 우리 테스트 케이스를 렌더했습니다. 이제 `HasData`의 변형(variation)의 구현을 독립적으로 만들어볼 시간입니다.
@@ -342,7 +342,7 @@ CommentList.defaultProps = {
 ### 4. 디자인을 가지고 구현을 검토하기
 
 <!-- Check how the component looks in Storybook. This example provided the CSS already, but in practice, we would tweak the styles and confirmed them in Storybook as we went along. -->
-컴포넌트가 Storybook에서 어떻게 보이는지 검토합니다. 이 예시에서는 CSS를 이미 제공합니다, 하지만 실제로는 styles을 약간 바꿔보면서 Storybook에서 어떻게 보이는지 확인합니다.
+컴포넌트가 Storybook에서 어떻게 보이는지 검토합시다. 이 예시에서는 CSS를 이미 제공했습니다, 하지만 실제로는 styles을 약간 바꿔보면서 Storybook에서 어떻게 보이는지 확인했습니다.
 
 <video autoPlay muted playsInline loop>
   <source
