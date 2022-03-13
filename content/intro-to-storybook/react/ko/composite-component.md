@@ -111,7 +111,7 @@ Empty.args = {
 ```
 
 <div class="aside">
-💡 <a href="https://storybook.js.org/docs/react/writing-stories/decorators"><b>데코레이터(Decorators)</b></a>는 스토리에 임의의 래퍼(wrapper)를 제공하는 한 방법입니다. 위의 예시에서 우리는 데코레이터 `key`를 사용하여 기본 내보내기에서 렌더링 된 컴포넌트에 `padding`을 추가합니다. 또한 데코레이터는 “providers”(React context를 설정하는 라이브러리 컴포넌트)에서 스토리를 감싸 줄 때 사용될 수 있습니다.
+💡 <a href="https://storybook.js.org/docs/react/writing-stories/decorators"><b>데코레이터(Decorators)</b></a>는 스토리에 임의의 래퍼(wrapper)를 제공하는 한 방법입니다. 위의 예시에서 우리는 데코레이터 `key`를 사용하여 기본 내보내기에서 렌더링 된 컴포넌트에 `padding`을 추가합니다. 또한 데코레이터는 “providers”(React context를 설정하는 라이브러리 컴포넌트)에서 스토리를 감싸줄 때 사용될 수 있습니다.
 </div>
 
 `TaskStories`를 가져옴으로써 최소한의 노력으로 스토리 속의 인수(arguments, 줄임말로 args)를 [합성(compose)](https://storybook.js.org/docs/react/writing-stories/args#args-composition)할 수 있었습니다. 이렇게 하면 두 컴포넌트가 받을 수 있는 데이터와 액션(mocked callbacks)이 모두 보존됩니다.
