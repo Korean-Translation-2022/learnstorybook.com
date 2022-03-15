@@ -1,3 +1,5 @@
+
+   
 ---
 title: '애드온'
 tocTitle: '애드온'
@@ -61,7 +63,6 @@ Controls을 통해 컴포넌트에 대한 다양한 입력(이 경우 긴 문자
 
 ```js:title=src/components/Task.stories.js
 const longTitleString = `This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`;
-
 export const LongTitle = Template.bind({});
 LongTitle.args = {
   task: {
