@@ -11,7 +11,7 @@ commit: 'ffd9ccb'
 
 ![](../../images/manager-preview.jpg)
 
-겉으로 보기에는 스토리북은 통일화된 유저 인터페이스를 보여줍니다. 그러나 안에서는, 두 세그먼트로 나뉘어져, **커뮤니케이션 채널을 통해서 이야기를 나눕니다:**
+겉으로 보기에는 스토리북은 통일화된 유저 인터페이스(UI)를 보여줍니다. 그러나 안에서는, 두 세그먼트로 나뉘어져, **커뮤니케이션 채널을 통해서 이야기를 나눕니다:**
 
 - **A Manager:** 스토리북의 검색, 네비게이션, 툴바, 애드온이 렌더링되는 UI 입니다.
 - **Preview:** 스토리들이 렌더링되는 아이프레임.
@@ -24,7 +24,7 @@ commit: 'ffd9ccb'
 
 <div class="aside">다음의 <a href="https://storybook.js.org/docs/react/addons/addons-api">@storybook/addons</a> 에서 API와 관련된 애드온들을 확인하세요.</div>
 
-The Addon Kit preconfigures the `Tool` to use globals. Let’s rename the global to more accurately reflect what it does. The `toggleOutline` function allows the user to actually toggle the outline addon on and off 👉🏽🔘
+애드온 키트는 `Tool`을 미리 설정하여 globals를 사용합니다. 글로벌을 재정의하여 더 정확하게 이것이 무엇을 하는지 반영해봅시다. `toggleOutline` 기능은 사용자로 하여금 아웃라인 애드온을 키고 끄게 토글하는 것을 허용합니다. 👉🏽🔘
 
 ![The tool track toggle state](../../images/track-state.gif)
 
