@@ -42,7 +42,7 @@ CSS 레이아웃이 디자인과 맞는지에 대해 확언하는 것은 어려�
 
 ![](../../images/panel.png)
 
-3. 새로운 탭을 만듭니다. [Storybook 문서](https://storybook.js.org/docs/react/writing-docs/introduction) 컴포넌트 문서화를 표시합니다.
+3. 새로운 탭을 만듭니다. [Storybook 문서](https://storybook.js.org/docs/react/writing-docs/introduction) 컴포넌트 문서화를 보여줍니다.
 
 ![](../../images/tab.png)
 

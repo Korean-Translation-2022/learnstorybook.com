@@ -4,7 +4,7 @@ description: '애드온 UI를 만들고 Storybook 안에 등록하기'
 commit: '5db9bc9'
 ---
 
-이 파일 `src/Tool.js` 에서 시작합시다. 이곳이 아웃라인 툴을 위한 UI 코드가 있을 곳입니다. 이 임포트를 [@storybook/components](https://www.npmjs.com/package/@storybook/components) 확인하세요. Storybook의 컴포넌트 라이브러리이며, 리액트와 이모션으로 만들어져 있습니다. Storybook을 만드는 자체에 사용되었기도 합니다 ([데모](https://next--storybookjs.netlify.app/official-storybook/)). 우리도 애드온을 만드는 데에 사용할 수 있습니다.
+이 파일 `src/Tool.js` 에서 시작합시다. 이곳이 아웃라인 툴을 위한 UI 코드가 있을 곳입니다. 이 import를 [@storybook/components](https://www.npmjs.com/package/@storybook/components) 확인하세요. Storybook의 컴포넌트 라이브러리이며, 리액트와 이모션으로 만들어져 있습니다. Storybook을 만드는 자체에 사용되었기도 합니다 ([데모](https://next--storybookjs.netlify.app/official-storybook/)). 우리도 애드온을 만드는 데에 사용할 수 있습니다.
 
 이번에는 `Icons` 와 `IconButton` 컴포넌트를 사용하여 아웃라인 선택자 툴을 만들겠습니다. 코드를 수정하고, `outline` 아이콘을 사용하여 적당한 제목을 줍니다.
 
@@ -39,7 +39,7 @@ export const Tool = () => {
 ```
 
 manger 파일로 이동해서, 애드온을 Storybook과 함께 고유 아이디로 `ADDON_ID` 등록합니다. 
-툴 역시도 고유한 아이디와 함께 등록합니다. 다음과 같은 이름을 추천드립니다 `storybook/addon-name`. 애드온 키트 역시 탭과 패널 예시를 포함하고 있습니다. 아웃라인 애드온이 툴만을 사용하기 때문에, 나머지는 삭제합니다.
+툴 역시도 고유한 아이디와 함께 등록합니다. `storybook/addon-name`과 같은 이름을 추천드립니다. 애드온 키트 역시 탭과 패널 예시를 포함하고 있습니다. 아웃라인 애드온이 툴만을 사용하기 때문에, 나머지는 삭제합니다.
 
 
 

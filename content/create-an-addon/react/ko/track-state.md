@@ -18,17 +18,17 @@ commit: 'ffd9ccb'
 
 토클 state를 추적해야하고 **또** 그 state를 Manager와 Preview에 모두 공유해야합니다. 그리하여, `useState` 대신 `@storybook/api`의 `useGlobals`를 사용하겠습니다.
 
-## 글로벌 state 추적하기
+## 전역 state 추적하기
 
-[Globals](https://storybook.js.org/docs/react/essentials/toolbars-and-globals/#globals) 는 “글로벌” (스토리에 국한된 것이 아닌) 컨텍스트를 스토리북에서 가집니다. 다른 스토리와 애드온과 데코레이터 사이에서 정보를 공유하기 편한 방법들입니다. `useGlobals` 훅은 이 글로벌 컨텍스트에 대한 접근을 당신이 만드는 툴 안에서 허락합니다.
+[Globals](https://storybook.js.org/docs/react/essentials/toolbars-and-globals/#globals) 는 “전역” (스토리에 국한된 것이 아닌) 컨텍스트를 스토리북에서 가집니다. 다른 스토리와 애드온과 데코레이터 사이에서 정보를 공유하기 편한 방법들입니다. `useGlobals` 훅은 이 전역 컨텍스트에 대한 접근을 당신이 만드는 툴 안에서 허락합니다.
 
 <div class="aside">다음의 <a href="https://storybook.js.org/docs/react/addons/addons-api">@storybook/addons</a> 에서 API와 관련된 애드온들을 확인하세요.</div>
 
-애드온 키트는 `Tool`을 미리 설정하여 globals를 사용합니다. 글로벌을 재정의하여 더 정확하게 이것이 무엇을 하는지 반영해봅시다. `toggleOutline` 기능은 사용자로 하여금 아웃라인 애드온을 키고 끄게 토글하는 것을 허용합니다. 👉🏽🔘
+애드온 키트는 `Tool`을 미리 설정하여 globals를 사용합니다. 전역을 재정의하여 더 정확하게 이것이 무엇을 하는지 반영해봅시다. `toggleOutline` 기능은 사용자로 하여금 아웃라인 애드온을 키고 끄게 토글하는 것을 허용합니다. 👉🏽🔘
 
 ![The tool track toggle state](../../images/track-state.gif)
 
-```diff:title=src/Tool.js
+```diff:title=src/Tool.jsf
 import React, { useCallback } from 'react';
 import { useGlobals } from '@storybook/api';
 import { Icons, IconButton } from '@storybook/components';
