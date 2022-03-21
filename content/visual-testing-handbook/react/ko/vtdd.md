@@ -1,6 +1,6 @@
 ---
-title: 'Visual TDD'
-description: 'Write your first visual tests'
+title: '시각적 TDD'
+description: '첫 번째 시각적 테스트를 만들기'
 commit: '109652d'
 ---
 
