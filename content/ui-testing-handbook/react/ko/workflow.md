@@ -1,12 +1,12 @@
 ---
-title: 'UI Testing Playbook'
-tocTitle: 'Workflow'
-description: 'A testing workflow that doesn’t slow you down'
+title: 'UI 테스팅 플레이북'
+tocTitle: '작업흐름'
+description: '우리를 느리게 하지 않는 테스팅 작업흐름'
 commit: '0fde846'
 ---
 
 <!-- It's easy to find tools that test different parts of the UI. But knowing how to combine them into a productive workflow is tricky. If you get it wrong, it spirals into a maintenance nightmare. -->
-UI의 서로 다른 부분을 테스트 하는 도구를 찾기는 쉽습니다. 하지만 이 모든 걸 생산적인 워크 플로우로 어떻게 결합하는 노하우는 까다롭습니다. 잘못 이해하면, 유지보수 악몽으로 빨려들어갈 수도 있습니다.
+UI의 서로 다른 부분을 테스트 하는 도구를 찾기는 쉽습니다. 하지만 이 모든 걸 생산적인 workflow로 어떻게 결합하는 노하우는 까다롭습니다. 잘못 이해하면, 유지보수 악몽으로 빨려들어갈 수도 있습니다.
 
 <!-- Our workflow reduces the maintenance burden by reusing stories as test cases. Plus, we can spot bugs faster by testing at the component level. -->
 우리의 워크 플로우는 스토리를 테스트 케이스로 재사용해서 유지보수 부담을 줄여줍니다. 더해서, 컴포넌트 수준에서 테스트해서 버그를 빨리 발견할 수 있습니다.
@@ -69,11 +69,11 @@ export default {
 #### PR 체크
 
 <!-- Tweaks to the Task UI can lead to unintended changes in other components where it's used: TaskList and InboxScreen. Running visual tests with Chromatic will catch those. It'll also ensure that everything is still wired up correctly. -->
-Task UI를 약간 고쳤을 때, 이를 사용하는 다른 컴포넌트를 의도치 않게 변경해버릴 수도 있습니다. TaskList나 InboxScreen처럼요. Chromatic으로 visual 테스트를 실행하면 이를 잡아낼 겁니다. 이를 통해 모든 게 정확하게 연결되어 있다는 걸 보장해주기도 합니다.
+Task UI를 약간 고쳤을 때, 이를 사용하는 다른 컴포넌트를 의도치 않게 변경해버릴 수도 있습니다. TaskList나 InboxScreen처럼요. Chromatic으로 시각적 테스트를 실행하면 이를 잡아낼 겁니다. 이를 통해 모든 게 정확하게 연결되어 있다는 걸 보장해주기도 합니다.
 
 <!-- Chromatic will be triggered automatically when you create a pull request. On completion, you'll be presented with a diff to review. In this case, the changes are intentional. Press the accept button to update the baselines. -->
 
-Chromatic은 pull request를 만들면 자동으로 작동할 겁니다. 완료되고 나면, 리뷰할 변경 사항을 보게 될 겁니다. 이 경우에는, 일부러 UI를 변경했습니다. accept 버튼을 눌러서 baselines을 최신화(update)해줍니다.
+Chromatic은 pull request를 만들면 자동으로 작동할 겁니다. 완료되고 나면 리뷰할 변경 사항을 보게 될 겁니다. 이 경우에는 일부러 UI를 변경했습니다. accept 버튼을 눌러서 baselines을 최신으로 업데이트해줍니다.
 
 ![](/ui-testing-handbook/workflow-visual-tests.png)
 
@@ -81,7 +81,7 @@ Chromatic은 pull request를 만들면 자동으로 작동할 겁니다. 완료�
 
 <!-- ### Accessibility tests -->
 
-### 접근성 검사
+### 접근성 테스트
 
 ![](/ui-testing-handbook/task-a11y.gif)
 
@@ -89,7 +89,7 @@ Chromatic은 pull request를 만들면 자동으로 작동할 겁니다. 완료�
 
 <!-- Run accessibility checks inside Storybook during development. The [A11y addon](https://storybook.js.org/addons/@storybook/addon-a11y) uses Axe to audit the active story and displays the report in the addon panel. A quick glance confirms that none of our stories have any violations. -->
 
-개발하는 동안 스토리북에서 접근성 체크를 실행해보세요. [A11y 애드온](https://storybook.js.org/addons/@storybook/addon-a11y)은 Axe를 사용해서 active story의 변경을 추적(audit)하고 addon 패널에 리포트를 보여줍니다. 한 번 빠르게 훑어보기만 해도 우리 스토리가 모두 위반사항이 없다는 걸 확신할 수 있습니다.
+개발하는 동안 스토리북에서 접근성 체크를 실행해보세요. [A11y 애드온](https://storybook.js.org/addons/@storybook/addon-a11y)은 Axe를 사용해서 active story의 변경을 추적(audit)하고 addon 패널에 리포트를 보여줍니다. 한 번 빠르게 훑어보기만 해도 우리 스토리가 모두 위반사항이 없다는 걸 확인할 수 있습니다.
 
 <!-- #### PR check -->
 
@@ -97,7 +97,7 @@ Chromatic은 pull request를 만들면 자동으로 작동할 겁니다. 완료�
 To catch regressions you need to run on all your components. You can do that by importing stories into a test file and then running an accessibility audit using [jest-axe](https://github.com/twilio-labs/paste/blob/cd0ddad508e41cb9982a693a5160f1b7866f4e2a/packages/paste-core/components/checkbox/__tests__/checkboxdisclaimer.test.tsx#L40). All violations will be reported back to the PR page.
 -->
 
-회귀 오류를 잡아내기 위해서 모든 컴포넌트를 검사해야 합니다. stories를 test file에 모두 import하고 에 [jest-axe](https://github.com/twilio-labs/paste/blob/cd0ddad508e41cb9982a693a5160f1b7866f4e2a/packages/paste-core/components/checkbox/__tests__/checkboxdisclaimer.test.tsx#L40)를 이용해서 accessibility audit을 실행해주면 됩니다. 모든 위반사항은 PR 페이지로 보고될 것입니다.
+회귀 오류를 잡아내기 위해서는 모든 컴포넌트를 검사해야 합니다. stories를 test file에 모두 import하고 [jest-axe](https://github.com/twilio-labs/paste/blob/cd0ddad508e41cb9982a693a5160f1b7866f4e2a/packages/paste-core/components/checkbox/__tests__/checkboxdisclaimer.test.tsx#L40)를 이용해서 accessibility audit을 실행해주면 됩니다. 모든 위반사항은 PR 페이지로 보고될 것입니다.
 
 ![](/ui-testing-handbook/ci-a11y.png)
 
@@ -167,8 +167,7 @@ describe('InboxScreen', () => {
 
 <!-- Run `yarn test` to confirm that all tests are passing. Notice how Jest runs in watch mode and only executes tests related to files that changed. -->
 
-`yarn test`를 실행해서 모든 테스트가 통과하는지 확인합니다. Jest가 watch 모드에서 어떻게 작동하는지 주의를 기울여보면, 변경된 파일과 관련된 테스트만 실행한다는 걸 알 수 있습니다.
-
+`yarn test`를 실행해서 모든 테스트가 통과하는지 확인합니다. Jest가 어떻게 watch 모드에서 실행되며 변경된 파일과 관련된 테스트만 실행하는지 살펴보세요.
 ![](/ui-testing-handbook/jest.png)
 
 #### PR check
@@ -180,7 +179,7 @@ describe('InboxScreen', () => {
 
 <!-- ## User flow tests -->
 
-## 사용자 흐름 테스트
+## 유저 흐름 테스트
 
 <!-- Lastly, you'll need to run E2E tests to ensure that all your critical user flows are working as expected. -->
 마지막으로, E2E 테스트를 실행해서, 모든 결정적인 사용자 흐름이 기대한대로 동작하는지 보장해야 합니다.
@@ -195,17 +194,17 @@ describe('InboxScreen', () => {
 #### PR check
 
 <!-- Just like all your other tests, Github actions will also run E2E tests using Cypress. -->
-다른 모든 테스트처럼, Github actions는 E2E테스트도 Cypress를 이용해서 실행할 겁니다.
+다른 모든 테스트처럼, Github actions는 Cypress를 이용해서 E2E도 실행해줍니다.
 
 ![](/ui-testing-handbook/user-flow-ci.png)
 
 <!-- ## Your journey begins -->
-## 모험의 시작
+## 모험은 시작되었습니다
 
 <!-- **UI Testing handbook** highlights testing strategies used by professional front-end teams. These tests act as health checks for your app, verify everything from visual appearance to UI logic, and even detect integration issues. What's more, you can reduce bugs by using continuous integration to test each commit automatically. -->
 
 
-**UI 테스팅 핸드북**은 프로 프런트 엔드 팀이 사용하는 테스트 전략을 강조합니다. 이 테스트들은 앱의 health checks처럼 돌아가고, 시각적인 외관(viusal appearance)부터 UI 로직을 검증할 뿐만 아니라, 심지어 통합 이슈까지 감지합니다. 게다가, 지속적 통합으로 매 커밋을 자동으로 테스트하면 버그를 감소시킬 수 있습니다.
+**UI 테스팅 핸드북**은 프로 프런트 엔드 팀이 사용하는 테스트 전략을 강조합니다. 이 테스트들은 앱의 health checks처럼 돌아가고, 눈에 보이는 겉모습(viusal appearance)부터 UI 로직을 검증할 뿐만 아니라, 심지어 통합 이슈까지 감지합니다. 게다가, 지속적 통합으로 매 커밋을 자동으로 테스트하면 버그를 감소시킬 수 있습니다.
 
 <!-- The final chapter concludes with the complete sample code, helpful resources, and frequently asked questions from developers. -->
 
