@@ -8,7 +8,7 @@ description: '스토리북의 확장과 자동화를 도와주세요'
 
 애드온을 만들어서 커뮤니티가 스토리북을 커스텀하고, 자동화할 수 있도록 도와주세요!
 
-시작은 간단합니다. [애드온 키트](https://github.com/storybookjs/addon-kit)는 애드온을 구축하는 데 필요한 모든 것을 제공합니다. [애드온 API](https://storybook.js.org/docs/react/addons/addons-api)를 사용해서 새로운 기능을 추가하고, 작업흐름을 자동화하고, 즐겨 쓰는 라이브러리와 통합할 수 있습니다. 또한, [애드온 목록](https://storybook.js.org/addons)을 통해 애드온을 수천만명의 개발자와 함께 공유할 수 있습니다.
+시작은 간단합니다. [애드온 키트](https://github.com/storybookjs/addon-kit)는 애드온을 구축하는 데 필요한 모든 것을 제공합니다. [애드온 API](https://storybook.js.org/docs/react/addons/addons-api)를 사용해서 새로운 기능을 추가하고, 작업 흐름(workflow)을 자동화하고, 즐겨 쓰는 라이브러리와 통합할 수 있습니다. 또한, [애드온 목록](https://storybook.js.org/addons)을 통해 애드온을 수천만명의 개발자와 함께 공유할 수 있습니다.
 
 ## 더 알아보기
 
