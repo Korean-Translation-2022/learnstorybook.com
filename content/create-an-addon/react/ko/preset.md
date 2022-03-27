@@ -1,7 +1,7 @@
 ---
 title: '프리셋'
 tocTitle: '프리셋'
-description: '모든 스토리에 윤곽을 보여줄 수 있습니다.'
+description: '모든 스토리에 아웃라인을 보여줄 수 있습니다.'
 ---
 
 이제 데코레이터 부분이 끝났으니, 모든 스토리를 감싸기 위해 preset 기능을 사용해봅시다. 
@@ -23,7 +23,7 @@ export const decorators = [withGlobals];
 
 <div class="aside">💡 애드온 키트의 <code>withRoundTrip</code> 데코레이터는 애드온과 스토리 간 양방향 소통을 위한 예시입니다. 하지만 애드온에 꼭 필요한 것은 아니며 삭제할 수 있습니다.</div>
 
-![도구를 껐다 켰다 하면 윤곽선이 나타납니다](../../images/toggle.gif)
+![도구를 껐다 켰다 하면 아웃라인이 나타납니다](../../images/toggle.gif)
 
 ## 최상위 단계 프리셋
 
