@@ -90,25 +90,25 @@ npx chromatic --project-token=<project-token>
 
 ```yaml:title=.github/workflows/chromatic.yml
 
-# 우리의 action에 대한 이름
+# Name of our action
 name: 'Chromatic'
-# action 트리거 이벤트
+# The event that will trigger the action
 on: push
 
-# action이 하는 일
+# What the action will do
 jobs:
   test:
-    # 동작하게 될 운영체제(operation system)
+    # The operating system it will run on
     runs-on: ubuntu-latest
-    # action이 거치는 단계 목록
+    # The list of steps that the action will go through
     steps:
       - uses: actions/checkout@v1
       - run: yarn
-        #👇 워크플로우 스텝으로 크로마틱(Chromatic)을 추가합니다.
+        #👇 Adds Chromatic as a step in the workflow
       - uses: chromaui/action@v1
-        # GitHub 크로마틱(Chromatic)에 필요한 옵션
+        # Options required for Chromatic's GitHub Action
         with:
-          #👇 크로마틱(Chromatic) projectToken, see https://storybook.js.org/tutorials/design-systems-for-developers/react/en/review/ to obtain it
+          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/design-systems-for-developers/react/en/review/ to obtain it
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
