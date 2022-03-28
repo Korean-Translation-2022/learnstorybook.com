@@ -9,7 +9,7 @@ commit: '0273e45'
 
 ## 단일한 진실 지점(SSOT)인가, 단일한 장애 지점(SPOF)인가
 
-이 전에, 디자인 시스템은 프런트엔드 팀에 있어서 [단일한 장애 지점](https://www.chromatic.com/blog/why-design-systems-are-a-single-point-of-failure) 이라고 한 적이 있습니다. 결국 디자인 시스템이란 디펜던시(Dependency)이기 때문입니다. 디자인 시스템 컴포넌트를 바꾸면, 그 변화는 의존 관계에 있는 앱들로 퍼지게 됩니다. 변화가 퍼지는 방식은 공평합니다. 개선된 부분과 버그가 함께 있기 때문입니다.
+이 전에, 디자인 시스템은 프런트엔드 팀에 있어서 [단일한 장애 지점(single point of failure)](https://www.chromatic.com/blog/why-design-systems-are-a-single-point-of-failure) 이라고 한 적이 있습니다. 결국 디자인 시스템이란 디펜던시(Dependency)이기 때문입니다. 디자인 시스템 컴포넌트를 바꾸면, 그 변화는 의존 관계에 있는 앱들로 퍼지게 됩니다. 변화가 퍼지는 방식은 공평합니다. 개선된 부분과 버그가 함께 있기 때문입니다.
 
 ![Design system dependencies](/design-systems-for-developers/design-system-dependencies.png)
 
@@ -27,7 +27,7 @@ commit: '0273e45'
 
 node_modules 삭제하기. 패키지 재설치하기. 로컬 저장소 비우기. 쿠키 삭제하기. 만약 이러한 행동들에 대해 어디서 들어본 듯 하다면, 여러분들은 팀메이트들이 최신 코드를 사용하도록 만든다는 게 얼마나 고된 일인지 알고 있는 것입니다. 팀메이트들이 완전히 동일한 개발 환경을 갖고 있지 않다면, 실제 버그와 로컬 개발 환경에서만 발생하는 이슈를 구분하는 건 거의 악몽 수준이죠.
 
-다행히도 프런트엔드 개발자로서, 우리는 '브라우저'라는 공통적인 컴파일 목표를 갖고 있습니다. 능숙한 팀들은 비주얼 리뷰를 위한 공통적인 참조 사항으로 Storybook을 온라인으로 퍼블리싱하기도 합니다. 이는 로컬 개발 환경이 내재한 문제점들을 피해가게 해줍니다(어쨌든 기술 지원팀으로 일하는 건 때로는 힘들 때도 있네요).
+다행히도 프런트엔드 개발자로서, 우리는 '브라우저'라는 공통적인 컴파일 목표를 갖고 있습니다. 능숙한 팀들은 비주얼 리뷰를 위한 공통적인 참조 사항으로 Storybook을 온라인으로 퍼블리싱하기도 합니다. 이는 로컬 개발 환경이 내재한 문제점들을 피해가게 해줍니다. (어쨌든 기술 지원팀으로 일하는 건 때로는 힘들 때도 있네요).
 
 ![Review your work in the cloud](/design-systems-for-developers/design-system-visual-review.jpg)
 
@@ -54,7 +54,7 @@ UI 컴포넌트들이 URL을 통해 접근 가능할 때, 관계자들은 UI가 
   />
 </video>
 
-npm을 통해 [chromatic](https://www.npmjs.com/package/chromatic) 패키지를 설치합니다.
+npm을 통해 [크로마틱(Chromatic)](https://www.npmjs.com/package/chromatic) 패키지를 설치합니다.
 
 ```shell
 yarn add --dev chromatic
@@ -88,45 +88,46 @@ npx chromatic --project-token=<project-token>
 
 아래처럼 chromatic.yml 이라는 파일을 생성합니다. 이는 우리의 CI 프로세스가 작동되도록 지시하게 만들어 줍니다. 지금은 작은 것부터 시작하고, 점차 발전 시켜 나갈 것입니다.
 
-```yaml
-# .github/workflows/chromatic.yml
+```yaml:title=.github/workflows/chromatic.yml
 
-# name of our action
+# 우리의 action에 대한 이름
 name: 'Chromatic'
-# the event that will trigger the action
+# action 트리거 이벤트
 on: push
 
-# what the action will do
+# action이 하는 일
 jobs:
   test:
-    # the operating system it will run on
+    # 동작하게 될 운영체제(operation system)
     runs-on: ubuntu-latest
-    # the list of steps that the action will go through
+    # action이 거치는 단계 목록
     steps:
       - uses: actions/checkout@v1
       - run: yarn
+        #👇 워크플로우 스텝으로 크로마틱(Chromatic)을 추가합니다.
       - uses: chromaui/action@v1
-        # options required to the GitHub chromatic action
+        # GitHub 크로마틱(Chromatic)에 필요한 옵션
         with:
-          projectToken: project-token
+          #👇 크로마틱(Chromatic) projectToken, see https://storybook.js.org/tutorials/design-systems-for-developers/react/en/review/ to obtain it
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 <div class="aside"><p>💡 단기적 용도로는 <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">GitHub secrets</a> 가 언급되지 않습니다. Secrets는 깃허브가 제공하는 안전한 환경변수입니다. 그래서 <code>project-token</code>의 코드를 힘들게 작성할 필요가 없습니다.</p></div>
 
-수정사항을 git add 합니다.
+수정사항을 git add 합니다. - 
 
 ```shell
 git add .
 ```
 
-커밋합니다.
+커밋합니다. - 
 
 ```shell
 git commit -m "Storybook deployment with GitHub action"
 ```
 
-마지막으로, 아래 명령어를 사용해 원격 저장소에 푸쉬합니다.
+마지막으로, 아래 명령어를 사용해 원격 저장소에 푸쉬합니다. - 
 
 ```shell
 git push origin master
@@ -146,8 +147,7 @@ git checkout -b improve-button
 
 처음은 버튼 컴포넌트에 약간의 변화를 가하는 것입니다. “눈에 확 들어오게 하세요” – 저희 디자이너들이 정말 좋아하겠네요.
 
-```javascript
-//src/Button.js
+```js:title=src/Button.js
 
 // ...
 const StyledButton = styled.button`
@@ -180,7 +180,7 @@ PR 체크 리스트의 페이지 아래쪽에, **Storybook Publish** 를 클릭�
 
 ![Why?!](/design-systems-for-developers/github-visual-review-feedback.gif)
 
-<div class="aside">크로마틱은 유료 서비스의 일부분으로 제품에 대한 완전한 UI 리뷰 워크플로우를 제공합니다. 스토리북 링크를 깃허브 PR로 복사하는 기능은 사용량이 적을 때는 문제 없지만(크로마틱 뿐만 아니라 스토리북을 호스팅하는 모든 서비스), 사용량이 커지면 여러분은 이러한 서비스를 고려하게 될지도 모릅니다. 이 서비스는 프로세스를 자동화하기 때문입니다. </div>
+<div class="aside">💡 크로마틱은 유료 서비스의 일부분으로 제품에 대한 완전한 UI 리뷰 워크플로우를 제공합니다. 스토리북 링크를 깃허브 PR로 복사하는 기능은 사용량이 적을 때는 문제 없지만(크로마틱 뿐만 아니라 스토리북을 호스팅하는 모든 서비스), 사용량이 커지면 여러분은 이러한 서비스를 고려하게 될지도 모릅니다. 이 서비스는 프로세스를 자동화하기 때문입니다. </div>
 
 소프트웨어 개발에서, 대부분의 결함은 기술적인 문제가 아니라 커뮤니케이션의 오류에서 비롯됩니다. 비주얼 리뷰는 디자인 시스템을 더 빨리 전달하기 위해 팀들이 개발 과정에서 지속적인 피드백을 받도록 도와줍니다.
 
