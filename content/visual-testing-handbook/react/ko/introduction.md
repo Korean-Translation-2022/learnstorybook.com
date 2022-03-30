@@ -20,6 +20,8 @@ description: 'UI를 테스트하는 실용적인 방법'
 
 유닛 테스트는 모듈을 분리하고 모듈의 작동방식을 검증합니다. 이는 입력값(props, state 등)을 제공하며 기댓값과 출력값을 비교합니다. 유닛 테스트는 바람직한 테스팅 방식입니다. 왜냐하면 개별적으로 모듈을 테스트하면서 edge case들을 쉽게 다루고 실패의 원인을 잡아낼 수 있기 때문입니다.
 
+<!-- A unit test isolates a module and then verifies its behavior. It supplies inputs (props, state, etc.) and compares the output to an expected result. Unit tests are desirable because testing modules in isolation makes it easier to cover edge cases and pinpoint the source of failures. -->
+
 <video autoPlay muted playsInline loop>
   <source 
   src="/tutorials/visual-testing-handbook/component-unit-testing.mp4"
@@ -56,6 +58,9 @@ QA 단계에서 회귀를 감지하고 UI 일관성을 적용하기위해 자동
 
 commit할 때마다 새 이미지 스냅샷이 이전에 승인된 기준 스냅샷과 자동으로 비교됩니다. 컴퓨터가 시각적 차이를 감지하면 개발자는 의도적인 변경을 승인하거나 우발적인 버그를 수정하라는 알림을 받습니다.
 
+<!-- 
+Each commit, new image snapshots are automatically compared to previously accepted baseline snapshots. When the machine detects visual differences, the developer gets notified to approve the intentional change or fix the accidental bug. -->
+
 <video autoPlay muted playsInline loop>
   <source 
   src="/tutorials/visual-testing-handbook/component-visual-testing.mp4"
@@ -67,5 +72,8 @@ commit할 때마다 새 이미지 스냅샷이 이전에 승인된 기준 스냅
 번거롭게 들릴 수도 있겠지만 이것은 자동화된 테스트에서 잘못된 탐지를 걸러내고, 사소한 UI 변경에 따라 테스트 케이스를 업데이트하고, 테스트를 다시 통과하기 위해 초과 근무를 하는 것보다는 쉬운 일입니다.
 
 ## 도구 배우기
+<!-- ## Learn the tooling -->
+
+이제 시각적 테스트에 대한 감이 생겼으니 이를 실행하는데 필요한 주요 도구인 컴포넌트 탐색기를 확인해 볼 것입니다. 다음 장에서는 컴포넌트 탐색기가 개발자가 컴포넌트를 빌드하고 테스트하는 데 어떻게 도움이 되는지 알아보겠습니다.
 
 이제 시각적 테스트에 대한 감이 생겼으니 이를 실행하는데 필요한 주요 도구인 컴포넌트 탐색기를 확인해 볼 것입니다. 다음 장에서는 컴포넌트 탐색기가 개발자가 컴포넌트를 빌드하고 테스트하는 데 어떻게 도움이 되는지 알아보겠습니다.
