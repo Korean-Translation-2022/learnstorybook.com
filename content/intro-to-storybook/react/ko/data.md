@@ -11,21 +11,21 @@ commit: 'b29407b'
 
 ## 컨테이너 컴포넌트
 
-현재 작성된 `TaskList`는 구현됨에 있어서 외부와 어떠한 소통도 하지 않기 때문에 “표상적(presentational)”이라고 할 수 있습니다. ([이 블로그 포스트](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)를 참조해 주세요. 데이터를 얻기 위해서는 “컨테이너(container)”가 필요합니다.)
+현재 구현된 `TaskList`는 외부와 어떠한 소통도 하지 않기 때문에 “표상적(presentational)”이라고 할 수 있습니다. ([이 블로그 포스트](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)를 참조해 주세요. 데이터를 얻기 위해서는 “컨테이너(container)”가 필요합니다.)
 
 이 예제는 [Redux](https://redux.js.org/)로 데이터를 저장하기 위해 가장 효과적인 도구 집합(toolset)인 [Redux Toolkit](https://redux-toolkit.js.org/)를 사용하여 앱의 간단한 데이터 모델을 만듭니다. 여기서 사용된 패턴은 [Apollo](https://www.apollographql.com/client/)와 [MobX](https://mobx.js.org/) 같은 다른 데이터 관리 라이브러리에도 적용됩니다.
 
-프로젝트에 필수 dependency를 다음과 같이 설치해 주세요.
+프로젝트에 필수 의존성(dependency)을 다음과 같이 설치해 주세요.
 
 ```bash
 yarn add @reduxjs/toolkit react-redux
 ```
 
-먼저 `src/lib` 폴더의 `store.js` 파일 (의도적으로 단순하게 작성함)에서 task의 state를 변경하는 동작에 대응하는 간단한 Redux 저장소를 구성해 보겠습니다.
+먼저 `src/lib` 폴더의 `store.js` 파일(의도적으로 단순하게 작성함)에서 task의 state를 변경하는 동작에 반응하는 간단한 Redux 저장소를 구성해 보겠습니다.
 
 ```js:title=src/lib/store.js
 /* 간단한 redux store/actions/reducer 구현.
- * 실제 앱은 훨씬 더 복잡하고 파일들이 분리되어 있습니다.
+ * 실제 앱은 훨씬 더 복잡하고 여러 다른 파일들로 분리됩니다.
  */
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
@@ -41,7 +41,7 @@ const defaultTasks = [
 ];
 
 /*
- * 여기서 저장소는 만들어집니다.
+ * 저장소는 여기서 만들어집니다.
  * 'slice'의 자세한 정보는 아래 문서에서 확인할 수 있습니다.
  * https://redux-toolkit.js.org/api/createSlice
  */
@@ -132,7 +132,7 @@ export function TaskList() {
 }
 ```
 
-이제 Redux에서 받은 실제 데이터로 생성된 컴포넌트가 있으므로, 이를 `src/app.js`에 연결하여 컴포넌트를 렌더링 할 수 있습니다. 그러나 지금은 먼저 컴포넌트 중심의 여정을 계속해나가도록 하겠습니다.
+이제 컴포넌트를 생성할 실제 데이터를 Redux에서 받았으므로, 이를 `src/app.js`에 연결하여 컴포넌트를 렌더링 할 수 있습니다. 그러나 지금은 먼저 컴포넌트 중심의 여정을 계속해나가도록 하겠습니다.
 
 그에 대한 내용은 다음 챕터에서 다룰 것이므로 걱정하지 않으셔도 됩니다.
 
@@ -201,5 +201,5 @@ Empty.args = {
 </video>
 
 <div class="aside">
-💡 변경과 함께 모든 테스트들은 업데이트를 필요로 합니다. <code>-u</code> 플래그와 함께 import 문을 업데이트하고 테스트 커맨드를 재실행하세요. 깃에 변경한 내역들을 커밋 하는 것도 잊지 마세요!
+💡 변경과 함께 모든 테스트를 업데이트해야 합니다. <code>-u</code> 플래그와 함께 import 문을 업데이트하고 테스트 커맨드를 재실행하세요. Git에 변경한 내역들을 commit 하는 것도 잊지 마세요!
 </div>
