@@ -138,7 +138,7 @@ export function TaskList() {
 
 이 단계에서 `TaskList`는 컨테이너이며 더 이상 어떠한 props도 받지 않기 때문에 Storybook 테스트는 작동을 멈추었을 것입니다. 대신 `TaskList`는 Redux store에 연결하고 이를 감싸는 `PureTaskList`에서 props를 설정합니다.
 
-하지만 이전 단계에서 진행한 Storybook 스토리의 `export` 구문에 `PureTaskList`(표상적인 컴포넌트)를 간단하게 렌더링함으로써 이러한 문제를 쉽게 해결할 수 있습니다.
+하지만 이전 단계에서 진행한 Storybook story의 `export` 구문에 `PureTaskList`(표상적인 컴포넌트)를 간단하게 렌더링함으로써 이러한 문제를 쉽게 해결할 수 있습니다.
 
 ```diff:title=src/components/TaskList.stories.js
 import React from 'react';
@@ -156,8 +156,8 @@ export default {
 
 export const Default = Template.bind({});
 Default.args = {
-  // args 컴포지션을 통해 스토리를 구성합니다.
-  // 이 데이터는 task.stories.js의 Default 스토리를 상속받았습니다.
+  // args 컴포지션을 통해 story를 구성합니다.
+  // 이 데이터는 task.stories.js의 Default story를 상속받았습니다.
   tasks: [
     { ...TaskStories.Default.args.task, id: '1', title: 'Task 1' },
     { ...TaskStories.Default.args.task, id: '2', title: 'Task 2' },
@@ -170,8 +170,8 @@ Default.args = {
 
 export const WithPinnedTasks = Template.bind({});
 WithPinnedTasks.args = {
-  // args 컴포지션을 통해 스토리를 구성합니다.
-  // 위의 Default 스토리에서 상속받은 데이터입니다.
+  // args 컴포지션을 통해 story를 구성합니다.
+  // 위의 Default story에서 상속받은 데이터입니다.
   tasks: [
     ...Default.args.tasks.slice(0, 5),
     { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
@@ -186,8 +186,8 @@ Loading.args = {
 
 export const Empty = Template.bind({});
 Empty.args = {
-  // args 컴포지션을 통해 스토리를 구성합니다.
-  // 위의 Loading 스토리에서 상속받은 데이터입니다.
+  // args 컴포지션을 통해 story를 구성합니다.
+  // 위의 Loading story에서 상속받은 데이터입니다.
   ...Loading.args,
   loading: false,
 };

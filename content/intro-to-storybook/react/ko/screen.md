@@ -178,13 +178,13 @@ export default App;
 
 <div class="aside"><p>test 파일을 업데이트하는 것을 잊지마세요 <code>src/App.test.js</code>. 그렇지 않으면 테스트에 실패할 수 있습니다.</p></div>
 
-그러나 여기서 흥미로운 점은 Storybook에서 스토리를 렌더링 할 때입니다.
+그러나 여기서 흥미로운 점은 Storybook에서 story를 렌더링 할 때입니다.
 
 앞에서 살펴보았듯이 `TaskList` 컴포넌트는 `PureTaskList`라는 표상적 컴포넌트를 렌더링 하는 **컨테이너(container)**입니다. 정의에 의하면 컨테이너 컴포넌트는 독립적인 환경에서 간단하게 렌더링 될 수 없습니다. 컨테이너 컴포넌트는 어떠한 context가 전달되거나 서비스에 연결되어야 하기 때문입니다. 이것이 의미하는 것은 Storybook에서 컨테이너를 렌더링 하기 위해서는 필요한 컨텍스트나 서비스를 mock(예를 들어, 가상 버전을 제공하기)하여야 한다는 것입니다.
 
 `TaskList`을 Storybook에 배치할 때 `PureTaskList`를 렌더링하고 컨테이너를 피함으로써 이 문제에서 벗어날 수 있습니다. 이와 비슷한 방식으로 `PureInboxScreen`을 Storybook에 렌더링 할 것입니다.
 
-하지만 `PureInboxScreen` 자체는 표상적 컴포넌트이지만 그 하위 컴포넌트인 `TaskList`는 아니기 때문에 문제가 발생합니다. 어떤 의미에서 보면 `PureInboxScreen`는 “컨테이너화”되는 것에 의해 오염되었다고 볼 수 있습니다. 따라서 `InboxScreen.stories.js`에서 스토리를 설정할 때:
+하지만 `PureInboxScreen` 자체는 표상적 컴포넌트이지만 그 하위 컴포넌트인 `TaskList`는 아니기 때문에 문제가 발생합니다. 어떤 의미에서 보면 `PureInboxScreen`는 “컨테이너화”되는 것에 의해 오염되었다고 볼 수 있습니다. 따라서 `InboxScreen.stories.js`에서 story를 설정할 때:
 
 ```js:title=src/components/PureInboxScreen.stories.js
 import React from 'react';
@@ -206,7 +206,7 @@ Error.args = {
 };
 ```
 
-비록 `error` 스토리가 제대로 작동할지라도, `TaskList`에 연결할 Redux store가 없기 때문에 `default` 스토리에 문제가 있음을 알 수 있습니다. (또한 단위 테스트로 `PureInboxScreen`을 테스트할 때도 비슷한 문제가 발생할 것입니다.)
+비록 `error` story가 제대로 작동할지라도, `TaskList`에 연결할 Redux store가 없기 때문에 `default` story에 문제가 있음을 알 수 있습니다. (또한 단위 테스트로 `PureInboxScreen`을 테스트할 때도 비슷한 문제가 발생할 것입니다.)
 
 ![고장난 inbox](/intro-to-storybook/broken-inboxscreen.png)
 
@@ -215,12 +215,12 @@ Error.args = {
 그러나 개발자가 불가피하게 컴포넌트 계층의 하위 계층에서 컨테이너를 렌더링 할 **필요가 생길 것입니다**. Storybook에서 전체 또는 대부분의 앱을 렌더링하려면 우리는 이러한 문제에 대한 해결책이 필요합니다.
 
 <div class="aside">
-여담으로 데이터를 하위 계층에 전달하는 것은 합당한 접근 방식입니다. 특히 <a href="http://graphql.org/">GraphQL</a>을 사용하는 경우에 그렇습니다. 저희는 <a href="https://www.chromatic.com">Chromatic</a>을 만들 때 이러한 방법으로 800개 이상의 스토리를 만들었습니다.
+여담으로 데이터를 하위 계층에 전달하는 것은 합당한 접근 방식입니다. 특히 <a href="http://graphql.org/">GraphQL</a>을 사용하는 경우에 그렇습니다. 저희는 <a href="https://www.chromatic.com">Chromatic</a>을 만들 때 이러한 방법으로 800개 이상의 story를 만들었습니다.
 </div>
 
 ## decorators와 함께 context를 제공하기
 
-좋은 소식은 스토리 내에서 `InboxScreen`에 Redux store를 제공하기가 매우 쉽다는 것입니다! decorators를 통해 모방된 Redux store를 사용하면 됩니다.
+좋은 소식은 story 내에서 `InboxScreen`에 Redux store를 제공하기가 매우 쉽다는 것입니다! decorators를 통해 모방된 Redux store를 사용하면 됩니다.
 
 ```diff:title=src/components/PureInboxScreen.stories.js
 import React from 'react';
@@ -278,17 +278,17 @@ Storybook에서 state를 순환하여 우리가 올바르게 하고 있는지 �
   />
 </video>
 
-## 인터랙티브 스토리
+## 인터랙티브 story
 
-지금까지 우리는 간단한 컴포넌트에서 시작하여 화면에 이르기까지 각 변경사항을 지속적으로 테스트하며 처음부터 완벽히 작동하는 애플리케이션을 구축할 수 있었습니다. 그러나 각 새로운 스토리는 UI가 깨지지 않도록 모든 스토리들에 대해 직접 확인되어야 합니다. 추가 작업들이 정말 많네요.
+지금까지 우리는 간단한 컴포넌트에서 시작하여 화면에 이르기까지 각 변경사항을 지속적으로 테스트하며 처음부터 완벽히 작동하는 애플리케이션을 구축할 수 있었습니다. 그러나 각 새로운 story는 UI가 깨지지 않도록 모든 story들에 대해 직접 확인되어야 합니다. 추가 작업들이 정말 많네요.
 
 이 워크플로우를 자동화하고 컴포넌트와 자동으로 상호 작용할 수 없을까요?
 
-스토리북의 [`play`](https://storybook.js.org/docs/react/writing-stories/play-function) 기능을 활용하면 됩니다. 플레이 기능은 스토리가 렌더링된 후 실행되는 코드 스니핏(snippets)을 포함합니다.
+story북의 [`play`](https://storybook.js.org/docs/react/writing-stories/play-function) 기능을 활용하면 됩니다. 플레이 기능은 story가 렌더링된 후 실행되는 코드 스니핏(snippets)을 포함합니다.
 
-플레이 기능은 업데이트될 때 UI를 추적하는 데 도움이 됩니다. 프레임워크에 구애받지 않는 DOM API를 사용하므로 플레이 기능으로 스토리를 작성하여 UI와 상호 작용하고 프런트엔드 프레임워크에 상관없이 시뮬레이션할 수 있습니다.
+플레이 기능은 업데이트될 때 UI를 추적하는 데 도움이 됩니다. 프레임워크에 구애받지 않는 DOM API를 사용하므로 플레이 기능으로 story를 작성하여 UI와 상호 작용하고 프런트엔드 프레임워크에 상관없이 시뮬레이션할 수 있습니다.
 
-그럼 지금부터 살펴봅시다! 새로 만든 `PureInboxScreen` 스토리를 업데이트하고 다음을 추가하여 컴포넌트 상호 작용을 설정합니다.
+그럼 지금부터 살펴봅시다! 새로 만든 `PureInboxScreen` story를 업데이트하고 다음을 추가하여 컴포넌트 상호 작용을 설정합니다.
 
 ```diff:title=src/components/PureInboxScreen.stories.js
 import React from 'react';
@@ -344,7 +344,7 @@ Error.args = {
 + };
 ```
 
-새로 만든 스토리를 확인해주세요. `Interactions` 패널을 클릭하면 스토리의 플레이 기능 내부의 상호 작용 목록을 볼 수 있습니다.
+새로 만든 story를 확인해주세요. `Interactions` 패널을 클릭하면 story의 플레이 기능 내부의 상호 작용 목록을 볼 수 있습니다.
 
 <video autoPlay muted playsInline loop>
   <source
@@ -357,7 +357,7 @@ Error.args = {
 
 ## 컴포넌트 기반 개발
 
-우리는 가장 아래에 해당하는 `Task`로부터 시작하여, `TaskList`로 진행하였고 이제 전체 화면을 구성하는 UI를 완성하였습니다. `InboxScreen`은 중첩된 컨테이너 컴포넌트를 수용하고 그에 수반하는 스토리들을 포함하고 있습니다.
+우리는 가장 아래에 해당하는 `Task`로부터 시작하여, `TaskList`로 진행하였고 이제 전체 화면을 구성하는 UI를 완성하였습니다. `InboxScreen`은 중첩된 컨테이너 컴포넌트를 수용하고 그에 수반하는 story들을 포함하고 있습니다.
 
 <video autoPlay muted playsInline loop style="width:480px; height:auto; margin: 0 auto;">
   <source
