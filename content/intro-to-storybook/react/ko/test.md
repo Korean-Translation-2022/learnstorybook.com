@@ -77,13 +77,13 @@ git commit -m "change task background to red"
 git push -u origin change-task-background
 ```
 
-마지막으로 GitHub 저장소를 열어 `change-task-background` 브랜치에 대한 풀리퀘스트를 엽니다.
+마지막으로 깃허브 저장소를 열어 `change-task-background` 브랜치에 대한 풀리퀘스트를 엽니다.
 
-![GitHub 저장소에서 task에 대한 PR 생성](/github/pull-request-background.png)
+![깃허브 저장소에서 task에 대한 PR 생성](/github/pull-request-background.png)
 
 풀리퀘스트에 설명을 추가하고 `Create pull request` 을 클릭합니다. 그리고 페이지 하단에서 "🟡 UI Tests" PR 확인을 클릭합니다.
 
-![GitHub 저장소에서 task에 대한 PR 생성](/github/pull-request-background-ok.png)
+![깃허브 저장소에서 task에 대한 PR 생성](/github/pull-request-background-ok.png)
 
 commit에 의해 포착된 UI 변경 사항이 표시됩니다.
 
