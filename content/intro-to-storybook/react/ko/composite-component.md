@@ -1,7 +1,7 @@
 ---
 title: '복합적 컴포넌트 조합하기'
 tocTitle: '복합적 컴포넌트'
-description: '간단한 컴포넌트로 복합적 컴포넌트를 조합해봅시다'
+description: '간단한 컴포넌트 조합으로 복합 컴포넌트를 만들어봅시다'
 commit: 'd622553'
 ---
 
@@ -19,7 +19,7 @@ Taskbox는 핀으로 고정된 task를 일반 task 위에 배치하여 강조합
 
 ## 설정하기
 
-복합적인 컴포넌트는 기본 컴포넌트와 크게 다르지 않습니다. `TaskList` 컴포넌트와 그에 해당하는 스토리 파일을 만들어보겠습니다. `src/components/TaskList.js` 와 `src/components/TaskList.stories.js`를 생성해주세요.
+복합 컴포넌트는 기본 컴포넌트와 크게 다르지 않습니다. `TaskList` 컴포넌트와 그에 해당하는 스토리 파일을 만들어보겠습니다. `src/components/TaskList.js` 와 `src/components/TaskList.stories.js`를 생성해주세요.
 
 우선 `TaskList`의 대략적인 구현부터 시작하겠습니다. 이전의 `Task` 컴포넌트를 가져오신 후, 속성과 액션을 입력값으로 전달해주세요.
 
@@ -108,7 +108,7 @@ Empty.args = {
 ```
 
 <div class="aside">
-<a href="https://storybook.js.org/docs/react/writing-stories/decorators"><b>데코레이터(Decorators)</b></a>는 스토리에 임의의 래퍼(wrapper)를 제공하는 한 방법입니다. 위의 예시에서 우리는 데코레이터 `key`를 사용하여 기본 내보내기에서 렌더링 된 컴포넌트에 `padding`을 추가합니다. 또한 데코레이터는 “providers”(React context를 설정하는 라이브러리 컴포넌트)에서 스토리를 감싸 줄 때 사용될 수 있습니다.
+<a href="https://storybook.js.org/docs/react/writing-stories/decorators"><b>데코레이터(Decorators)</b></a>는 스토리에 임의의 래퍼(wrapper)를 제공하는 한 방법입니다. 이 예시에서 우리는 데코레이터 `key`를 사용하여 기본 내보내기에서 렌더링 된 컴포넌트에 `padding`을 추가합니다. 또한 데코레이터는 “providers”(React context를 설정하는 라이브러리 컴포넌트)에서 스토리를 감싸 줄 때 사용될 수 있습니다.
 </div>
 
 `TaskStories`를 가져옴으로써 최소한의 노력으로 스토리 속의 인수(arguments, 줄임말로 args)를 [합성(compose)](https://storybook.js.org/docs/react/writing-stories/args#args-composition)할 수 있었습니다.
@@ -193,7 +193,7 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   />
 </video>
 
-목록에서 핀으로 고정된 task의 위치를 확인해주세요. 핀으로 고정된 task를 사용자를 위해 목록의 맨 위에 위치하도록 하여 우선순위를 부여하려고 합니다.
+목록에서 핀으로 고정된 task의 위치를 확인해 주세요. 핀으로 고정된 task를 사용자를 위해 목록의 맨 위에 위치하도록 우선순위를 부여합니다.
 
 ## 데이터 요구사항 및 props
 
@@ -236,9 +236,9 @@ Storybook 스토리, 수동 테스트, 스냅샷 테스트는 UI 버그를 피�
 
 그러나, 가끔 오류는 세부 사항에 숨어있습니다. 세부 사항을 명확히 하기 위해서 테스트 프레임워크가 필요합니다. 이는 우리에게 단위 테스트의 필요성을 가져다줍니다.
 
-우리의 경우에는 `TaskList`가`tasks` prop에서 전달된 일반 task보다 핀으로 고정된 task를 **먼저** 렌더링 하기를 원합니다. 이러한 특정 시나리오를 테스트하는 스토리(`WithPinnedTasks`)가 있다 할지라도, 컴포넌트가 task의 순서를 바르게 정렬하지 않는 버그와 같은 경우 사람이 검토할 때는 판단하기 애매모호할 수 있습니다. 일반적인 시선에는 딱히 **“잘못되었어!”** 라고 보이지 않을 것입니다.
+우리의 경우에는 `TaskList`가`tasks` prop에서 전달된 일반 task보다 핀으로 고정된 task를 **먼저** 렌더링 하기를 원합니다. 이러한 특정 시나리오를 테스트하는 스토리(`WithPinnedTasks`)가 있다 할지라도, 컴포넌트가 task의 순서를 바르게 정렬하지 않는 버그와 같은 경우 사람이 판단하기 애매모호할 수 있습니다. 일반적인 시선에는 딱히 **'틀렸네!'** 라고 보이지 않을 것입니다.
 
-그래서 이러한 문제를 피하기 위하여 Jest를 사용하여 스토리를 DOM에 렌더링 하고 출력 값의 두드러진 특징을 확인하기 위해 DOM 쿼리 코드를 실행할 수 있습니다. 스토리 형식의 좋은 점은 간단히 스토리를 테스트에 가져와 렌더링 할 수 있다는 점입니다!
+이러한 문제를 피하기 위하여 Jest를 사용해 스토리를 DOM에 렌더링 하고, 일부 DOM 쿼리 코드를 실행해 출력 값의 두드러진 특징을 확인할 수 있습니다. 스토리 형식의 좋은 점은 간단히 스토리를 테스트에 가져와 렌더링 할 수 있다는 점입니다!
 
 `src/components/TaskList.test.js`라는 테스트 파일을 만들어주세요. 여기서 출력 값을 검증하는 테스트를 만들어보겠습니다.
 
@@ -269,5 +269,5 @@ it('renders pinned tasks at the start of the list', () => {
 단위 테스트는 매우 취약할 수 있다는 것도 아셔야 합니다. 프로젝트의 완성도에 따라, `Task`의 정확한 구현이 변할 수 있습니다. 어쩌면 다른 클래스명을 사용하거나 `input` 대신 `textarea`를 사용하여 테스트가 실패하게 되면 업데이트가 필요할 수 있습니다. 이것이 꼭 문제라기보다는 UI에 대한 단위 테스트를 자유롭게 사용하는 것에 주의해야 한다는 지표입니다. 단위 테스트는 유지 관리하기가 쉽지 않습니다. 가능한 경우 수동, 스냅샷, 시각적 회귀 테스트([테스트 챕터](/intro-to-storybook/react/ko/test/) 보기)를 사용하세요.
 
 <div class="aside">
-💡 깃에 변경된 사항을 커밋하는 것을 잊지 마세요!
+💡 git에 변경된 사항을 commit하는 것을 잊지 마세요!
 </div>
