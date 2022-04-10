@@ -5,21 +5,19 @@ description: '컴포넌트로 화면을 구성해봅시다'
 commit: '05aa2ef'
 ---
 
-지금까지 작은 것에서부터 시작하여 복잡성을 점점 더하는 상향식의 UI를 만드는 것에 집중해왔습니다. 이를 통해 각 컴포넌트를 독립적으로 개발하고 데이터의 요구 사항을 파악하며 Storybook에서 사용해 볼 수 있었습니다. 모두 서버를 구축하거나 화면을 만들 필요가 없었습니다!
+우리는 지금까지 작은 것에서부터 시작하여 복잡성을 점점 더하는 방식으로 UI를 만들었습니다. 이를 통해 각 컴포넌트를 독립적으로 개발하고 데이터의 요구 사항을 파악하며 Storybook에서 사용해 볼 수 있었습니다. 모두 서버를 구축하거나 화면을 만들 필요가 없었습니다!
 
 이번 챕터에서는 화면에서 컴포넌트를 결합하고 Storybook에서 그 화면을 개발함으로써 계속하여 완성도를 높여보겠습니다.
 
 ## 중첩된 컨테이너 컴포넌트
 
-앱이 매우 간단하므로 우리가 만들 화면은 매우 사소합니다. 
-
-일부 레이아웃에서 `TaskList` 컴포넌트 (Redux를 통해 자체적으로 데이터를 제공함)을 감싸고, 최상위 레벨의 `error` 필드를 Redux에서 가져오는 것입니다(이 에러는 서버 연결에 문제가 있으면 설정되는 항목이라고 가정해봅시다). `InboxScreen.js`를 `components`폴더 안에 생성해주세요.
+앱이 매우 간단하므로 우리가 만들 화면은 매우 사소합니다. 일부 레이아웃에서 `TaskList` 컴포넌트(Redux를 통해 자체적으로 데이터를 제공함)를 감싸고, 최상위 레벨의 `error` 필드를 Redux에서 가져오는 것입니다(이 에러는 서버 연결에 문제가 있으면 설정된다고 가정해봅시다). `InboxScreen.js`를 `components`폴더 안에 생성해주세요.
 
 Redux 스토어('src/lib/store.js')를 업데이트하여 설정하고자 하는 에러 필드를 포함시켜봅시다.
 
 ```diff:title=src/lib/store.js
  /* 간단한 리덕스 스토어/액션/리듀서 구현
- * 실제 앱은 훨씬 더 복잡하고 파일들이 분리되어 있습니다.
+ * 실제 앱은 훨씬 더 복잡하고 여러 다른 파일들로 분리됩니다.
  */
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
@@ -49,7 +47,7 @@ const defaultTasks = [
 ];
 
 /*
- * 여기서 저장소는 만들어집니다.
+ * 저장소는 여기서 만들어집니다.
  * 'slice'의 자세한 정보는 아래 문서에서 확인할 수 있습니다.
  * https://redux-toolkit.js.org/api/createSlice
  */
@@ -89,6 +87,7 @@ const store = configureStore({
 export default store;
 
 ```
+
 이제 새롭게 업데이트된 스토어가 생겼습니다. `src/components` 폴더에 `InboxScreen.js` 파일을 만들어봅시다.
 
 ```js:title=src/components/InboxScreen.js
@@ -139,7 +138,7 @@ export function InboxScreen() {
 }
 ```
 
-또한 `App` 컴포넌트를 변경하여 `InboxScreen`을 렌더링 합니다. (올바른 화면 선택을 위하여 router를 사용해도 되지만 여기서는 걱정하지 않도록 하겠습니다.)
+또한 `App` 컴포넌트를 변경하여 `InboxScreen`을 렌더링 합니다. (올바른 화면 선택을 위하여 router를 사용해도 되지만 여기서는 고려하지 않도록 하겠습니다.)
 
 ```diff:title=src/App.js
 - import logo from './logo.svg';
@@ -181,7 +180,7 @@ export default App;
 
 그러나 여기서 흥미로운 점은 Storybook에서 스토리를 렌더링 할 때입니다.
 
-앞에서 살펴보았듯이 `TaskList` 컴포넌트는 `PureTaskList`라는 표상적 컴포넌트를 렌더링 하는 **컨테이너(container)**입니다. 정의에 의하면 컨테이너 컴포넌트는 독립적인 환경에서 간단하게 렌더링 될 수 없습니다. 컨테이너 컴포넌트는 어떠한 컨텍스트가 전달되거나 서비스에 연결되기를 기대하기 때문입니다. 이것이 의미하는 것은 Storybook에서 컨테이너를 렌더링 하기 위해서는 필요한 컨텍스트나 서비스를 mock(예를 들어, 가상 버전을 제공하기)하여야 한다는 것입니다.
+앞에서 살펴보았듯이 `TaskList` 컴포넌트는 `PureTaskList`라는 표상적 컴포넌트를 렌더링 하는 **컨테이너(container)**입니다. 정의에 의하면 컨테이너 컴포넌트는 독립적인 환경에서 간단하게 렌더링 될 수 없습니다. 컨테이너 컴포넌트는 어떠한 context가 전달되거나 서비스에 연결되어야 하기 때문입니다. 이것이 의미하는 것은 Storybook에서 컨테이너를 렌더링 하기 위해서는 필요한 컨텍스트나 서비스를 mock(예를 들어, 가상 버전을 제공하기)하여야 한다는 것입니다.
 
 `TaskList`을 Storybook에 배치할 때 `PureTaskList`를 렌더링하고 컨테이너를 피함으로써 이 문제에서 벗어날 수 있습니다. 이와 비슷한 방식으로 `PureInboxScreen`을 Storybook에 렌더링 할 것입니다.
 
@@ -211,7 +210,7 @@ Error.args = {
 
 ![고장난 inbox](/intro-to-storybook/broken-inboxscreen.png)
 
-이 문제를 피하는 한 가지 방법으로 앱의 최상위 수준에서만 컨테이너 컴포넌트를 렌더링 하는 대신 필요한 모든 데이터를 상위의 컴포넌트에서 하위의 컴포넌트로 전달하는 것입니다.
+이 문제를 피하는 한 가지 방법은 앱의 최상위 수준에서만 컨테이너 컴포넌트를 렌더링 하는 대신 필요한 모든 데이터를 상위 컴포넌트에서 하위 컴포넌트로 전달하는 것입니다.
 
 그러나 개발자가 불가피하게 컴포넌트 계층의 하위 계층에서 컨테이너를 렌더링 할 **필요가 생길 것입니다**. Storybook에서 전체 또는 대부분의 앱을 렌더링하려면 우리는 이러한 문제에 대한 해결책이 필요합니다.
 
@@ -219,7 +218,7 @@ Error.args = {
 여담으로 데이터를 하위 계층에 전달하는 것은 합당한 접근 방식입니다. 특히 <a href="http://graphql.org/">GraphQL</a>을 사용하는 경우에 그렇습니다. 저희는 <a href="https://www.chromatic.com">Chromatic</a>을 만들 때 이러한 방법으로 800개 이상의 스토리를 만들었습니다.
 </div>
 
-## decorators와 함께 컨텍스트를 제공하기
+## decorators와 함께 context를 제공하기
 
 좋은 소식은 스토리 내에서 `InboxScreen`에 Redux store를 제공하기가 매우 쉽다는 것입니다! decorators를 통해 모방된 Redux store를 사용하면 됩니다.
 
@@ -267,9 +266,9 @@ Error.args = {
 };
 ```
 
-[Apollo](https://www.npmjs.com/package/apollo-storybook-decorator)와 [Relay](https://github.com/orta/react-storybooks-relay-container) 등 여타 데이터 라이브러리에 대해서도 모방된 컨텍스트를 제공하는 방식은 비슷합니다.
+[Apollo](https://www.npmjs.com/package/apollo-storybook-decorator)와 [Relay](https://github.com/orta/react-storybooks-relay-container) 등 여타 데이터 라이브러리에 대해서도 모방된 context를 제공하는 방식은 비슷합니다.
 
-Storybook에서 state를 순환해봄으로써 우리가 올바르게 하고 있는지를 쉽게 테스트할 수 있도록 해줍니다:
+Storybook에서 state를 순환하여 우리가 올바르게 하고 있는지 쉽게 테스트할 수 있습니다 -
 
 <video autoPlay muted playsInline loop >
 
@@ -278,7 +277,6 @@ Storybook에서 state를 순환해봄으로써 우리가 올바르게 하고 있
     type="video/mp4"
   />
 </video>
-
 
 ## 인터랙티브 스토리
 
@@ -368,7 +366,7 @@ Error.args = {
   />
 </video>
 
-[**컴포넌트 기반 개발 (Component-Driven Development)**](https://www.componentdriven.org/)은 컴포넌트의 상위 계층으로 올라감에 따른 복잡성을 점진적으로 확장할 수 있도록 해줍니다. 이것의 이점 중 하나는 보다 개발 과정에 집중할 수 있으며 가능한 모든 UI 순열의 적용 범위가 늘어난다는 것입니다. 간단히 말하면, 컴포넌트 기반 개발(CDD)은 더 높은 품질과 복잡성을 가진 사용자 인터페이스를 만들 수 있도록 도와줍니다.
+[**컴포넌트 기반 개발 (Component-Driven Development)**](https://www.componentdriven.org/)은 컴포넌트의 상위 계층으로 올라감에 따른 복잡성을 점진적으로 확장할 수 있도록 해줍니다. 이것의 이점 중 하나는 개발 과정에 더욱 집중할 수 있으며 가능한 모든 UI 순열의 적용 범위가 늘어난다는 것입니다. 간단히 말하면, 컴포넌트 기반 개발(CDD)은 더 높은 품질과 복잡성을 가진 사용자 인터페이스를 만들 수 있도록 도와줍니다.
 
 아직 끝이 아닙니다! UI가 완성되었다고 할 일이 모두 끝난 것은 아닙니다. 또한 우리는 시간이 지나도 UI가 내구성을 유지할 수 있도록 해야 합니다.
 
