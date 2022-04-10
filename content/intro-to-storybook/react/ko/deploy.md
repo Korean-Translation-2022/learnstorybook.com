@@ -56,7 +56,7 @@ yarn add -D chromatic
   />
 </video>
 
-프로젝트를 위해 생성된 고유한 `project-token`을 복사해주세요. 그런 다음 Storybook을 build하고 배포하기 위해 아래 명령어를 실행해주세요. 여러분의 토큰으로 `project-token` 부분을 꼭 바꿔주세요.
+프로젝트를 위해 생성된 고유한 `project-token`을 복사해주세요. 그런 다음 Storybook을 빌드하고 배포하기 위해 아래 명령어를 실행해주세요. 여러분의 토큰으로 `project-token` 부분을 꼭 바꿔주세요.
 
 ```bash
 yarn chromatic --project-token=<project-token>
@@ -127,11 +127,11 @@ git commit -m "GitHub action setup"
 git push origin main
 ```
 
-GitHub action을 설정하면 코드를 push할 때마다 Storybook이 Chromatic에 배포될 것입니다. Chromatic의 프로젝트 build 화면에서 배포된 모든 Storybook을 보실 수 있습니다.
+GitHub action을 설정하면 코드를 push할 때마다 Storybook이 Chromatic에 배포될 것입니다. Chromatic의 프로젝트 빌드 화면에서 배포된 모든 Storybook을 보실 수 있습니다.
 
 ![Chromatic 사용자 대시보드](/intro-to-storybook/chromatic-user-dashboard.png)
 
-맨 위에 있는 최신 build를 클릭해주세요.
+맨 위에 있는 최신 빌드를 클릭해주세요.
 
 그런 다음, 최신 버전의 Storybook을 보시려면 `View Storybook` 버튼을 클릭해주세요.
 
