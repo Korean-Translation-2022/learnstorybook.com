@@ -23,7 +23,9 @@ Taskbox는 핀으로 고정된 task를 일반 task 위에 배치하여 강조합
 
 우선 `TaskList`의 대략적인 구현부터 시작하겠습니다. 이전의 `Task` 컴포넌트를 가져오신 후, 속성과 액션을 입력값으로 전달해주세요.
 
-```js:title=src/components/TaskList.js
+```javascript
+// src/components/TaskList.js
+
 import React from 'react';
 
 import Task from './Task';
@@ -54,7 +56,9 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 
 다음으로 `Tasklist`의 test states를 story 파일에 작성합니다.
 
-```js:title=src/components/TaskList.stories.js
+```javascript
+// src/components/TaskList.stories.js
+
 import React from 'react';
 
 import TaskList from './TaskList';
@@ -70,8 +74,10 @@ const Template = args => <TaskList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+
   // args를 통해 story를 형성합니다.
   // 이 데이터는 Task.stories.js의 Default story에서 상속되었습니다.
+
   tasks: [
     { ...TaskStories.Default.args.task, id: '1', title: 'Task 1' },
     { ...TaskStories.Default.args.task, id: '2', title: 'Task 2' },
@@ -84,8 +90,10 @@ Default.args = {
 
 export const WithPinnedTasks = Template.bind({});
 WithPinnedTasks.args = {
+
   // args를 통해 story를 형성합니다.
   // 위의 Default story에서 상속된 데이터입니다.
+
   tasks: [
     ...Default.args.tasks.slice(0, 5),
     { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
@@ -100,8 +108,10 @@ Loading.args = {
 
 export const Empty = Template.bind({});
 Empty.args = {
+
   // args를 통해 story를 형성합니다.
   // 위의 Loading story에서 상속된 데이터입니다.
+
   ...Loading.args,
   loading: false,
 };
@@ -128,7 +138,9 @@ Empty.args = {
 
 우리의 컴포넌트는 아직 기본 뼈대만을 갖추었지만, 앞으로 작업하게 될 story에 대한 아이디어를 얻었습니다. `.list-items` wrapper가 지나치게 단순하다고 생각할 수도 있습니다. 맞습니다! 대부분의 경우에 우리는 단지 wrapper를 추가하기 위해서 새로운 컴포넌트를 만들지 않습니다. 하지만 `TaskList` 컴포넌트의 **진정한 복잡성**은 `withPinnedTasks`, `loading` 그리고 `empty`에서 드러날 것입니다.
 
-```js:title=src/components/TaskList.js
+```javascript
+// src/components/TaskList.js
+
 import React from 'react';
 
 import Task from './Task';
@@ -197,11 +209,13 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 
 ## 데이터 요구사항 및 props
 
-컴포넌트가 커질수록 입력에 필요한 데이터 요구사항도 함께 커집니다. `TaskList`에서 prop의 요구사항을 정의해봅시다. `Task`는 하위 컴포넌트이기 때문에 렌더링에 필요한 적합한 형태의 데이터를 제공해야 합니다. 시간 절약을 위해서 `Task`에서 사용한 `propTypes`를 재사용하겠습니다.
+컴포넌트가 커질수록 입력에 필요한 데이터 요구사항도 함께 커집니다. `TaskList`에서 prop의 요구사항을 정의해봅시다. `Task`는 하위 컴포넌트이기 때문에 렌더링에 필요한 적합한 형태의 데이터를 제공해야 합니다. 시간 절약을 위해서 `Task`에서 사용한 propTypes을 재사용하겠습니다.
 
-```diff:title=src/components/TaskList.js
+```javascript
+// src/components/TaskList.js
+
 import React from 'react';
-+ import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Task from './Task';
 
@@ -209,24 +223,26 @@ export default function TaskList() {
   ...
 }
 
-+ TaskList.propTypes = {
-+  /** loading 상태인지 확인하는 데이터 */
-+  loading: PropTypes.bool,
-+  /** 작업 목록 데이터 */
-+  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
-+  /** 작업을 고정으로 변경하는 이벤트 */
-+  onPinTask: PropTypes.func,
-+  /** 작업 보관을 위한 이벤트 */
-+  onArchiveTask: PropTypes.func,
-+ };
-+ TaskList.defaultProps = {
-+  loading: false,
-+ };
+
+TaskList.propTypes = {
+  /** Checks if it's in loading state */
+  loading: PropTypes.bool,
+  /** The list of tasks */
+  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
+  /** Event to change the task to pinned */
+  onPinTask: PropTypes.func,
+  /** Event to change the task to archived */
+  onArchiveTask: PropTypes.func,
+};
+
+TaskList.defaultProps = {
+  loading: false,
+};
 ```
 
 ## 자동화된 테스트
 
-이전 챕터에서 우리는 Storyshots을 이용하여 스냅샷 테스트하는 법을 배워보았습니다. `Task`에서는 렌더링이 잘 되는지 확인하는 것 이상의 많은 복잡성이 필요하지는 않았습니다. `TaskList`에서는 복잡성이 더해지기 때문에 특정 입력이 자동화된 테스트에 적합한 방식으로 출력되는지 확인해야 합니다. 이를 위해 테스트 렌더러와 함께 [Jest](https://facebook.github.io/jest/)를 사용하여 단위 테스트를 만들어 보겠습니다.
+이전 챕터에서 우리는 Storyshots을 이용하여 스냅샷 테스트하는 법을 배워보았습니다. `Task`에서는 렌더링이 잘 되는지 확인하는 것 이상의 많은 복잡성이 필요하지는 않았습니다. `TaskList`에서는 복잡성이 더해지기 때문에 특정 입력이 자동화된 테스트에 적합한 방식으로 출력되는지 확인해야 합니다. 이를 위해 테스트 랜더러와 함께 [Jest](https://facebook.github.io/jest/)를 사용하여 단위 테스트를 만들어 보겠습니다.
 
 ![Jest 로고](/intro-to-storybook/logo-jest.png)
 
@@ -236,25 +252,28 @@ Storybook story, 수동 테스트, 스냅샷 테스트는 UI 버그를 피하는
 
 그러나, 가끔 오류는 세부 사항에 숨어있습니다. 세부 사항을 명확히 하기 위해서 테스트 프레임워크가 필요합니다. 이는 우리에게 단위 테스트의 필요성을 가져다줍니다.
 
+
 우리의 경우에는 `TaskList`가`tasks` prop에서 전달된 일반 task보다 핀으로 고정된 task를 **먼저** 렌더링 하기를 원합니다. 이러한 특정 시나리오를 테스트하는 story(`WithPinnedTasks`)가 있다 할지라도, 컴포넌트가 task의 순서를 바르게 정렬하지 않는 버그와 같은 경우 사람이 판단하기 애매모호할 수 있습니다. 일반적인 시선에는 딱히 **'틀렸네!'** 라고 보이지 않을 것입니다.
 
 이러한 문제를 피하기 위하여 Jest를 사용해 story를 DOM에 렌더링 하고, 일부 DOM 쿼리 코드를 실행해 출력 값의 두드러진 특징을 확인할 수 있습니다. story 형식의 좋은 점은 간단히 story를 테스트에 가져와 렌더링 할 수 있다는 점입니다!
 
 `src/components/TaskList.test.js`라는 테스트 파일을 만들어주세요. 여기서 출력 값을 검증하는 테스트를 만들어보겠습니다.
 
-```js:title=src/components/TaskList.test.js
+```javascript
+// src/components/TaskList.test.js
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '@testing-library/jest-dom/extend-expect';
 
-import { WithPinnedTasks } from './TaskList.stories'; //👈 만든 story를 import 해줍니다.
+import { WithPinnedTasks } from './TaskList.stories'; //👈  Our story imported here
 
 it('renders pinned tasks at the start of the list', () => {
   const div = document.createElement('div');
-  //👇 Story의 인수를 테스트에 사용할 예정입니다.
+  //👇 Story's args used with our test
   ReactDOM.render(<WithPinnedTasks {...WithPinnedTasks.args} />, div);
 
-  //👇 "(고정된)Task 6" 이라는 작업이 마지막이 아닌, 처음으로 렌더링 되는 것을 예상합니다.
+  // We expect the task titled "Task 6 (pinned)" to be rendered first, not at the end
   const lastTaskInput = div.querySelector('.list-item:nth-child(1) input[value="Task 6 (pinned)"]');
   expect(lastTaskInput).not.toBe(null);
 
@@ -271,3 +290,4 @@ it('renders pinned tasks at the start of the list', () => {
 <div class="aside">
 💡 Git에 변경된 사항을 commit하는 것을 잊지 마세요!
 </div>
+

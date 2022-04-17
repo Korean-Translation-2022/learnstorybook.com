@@ -1,6 +1,6 @@
 ---
 title: '시각적 TDD'
-description: '첫 번째 시각적 테스트를 만들어보세요'
+description: '첫 번째 시각적 테스트를 만들기'
 commit: '109652d'
 ---
 
@@ -59,11 +59,13 @@ export default function CommentList({ loading, comments, totalCount }) {
 
 CommentList.propTypes = {
   /**
+ JIHYO-JEON
    * loading state의 컴포넌트입니다.
    */
   loading: PropTypes.bool,
 
   /**
+
    * 총 댓글 갯수
    */ 
   totalCount: PropTypes.number,
@@ -88,7 +90,7 @@ CommentList.defaultProps = {
 };
 ```
 
-이제 기본적인 구현이 있으니, 테스트 state를 만들 수 있습니다. Storybook을 사용하면 이 일을 빠르고 쉽게 할 수 있습니다.
+이제 기본적인 구현이 있으니, 테스트 상태를 만들 수 있습니다. Storybook은 이 일을 빠르고 쉽게 만들어 줍니다.
 
 `CommentList.stories.js`라는 파일을 `src/components` 폴더에 만들고 다음을 추가합니다.
 
@@ -315,7 +317,7 @@ CommentList.defaultProps = {
 };
 ```
 
-### 4. 디자인에 대한 구현 검토하기
+### 4. 디자인을 가지고 구현을 검토하기
 
 컴포넌트가 Storybook에서 어떻게 보이는지 검토합시다. 이 예시에서는 CSS를 이미 제공했습니다, 하지만 실제로는 styles을 약간 바꿔보면서 Storybook에서 어떻게 보이는지 확인했습니다.
 

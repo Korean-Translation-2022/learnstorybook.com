@@ -1,7 +1,7 @@
 ---
-title: '마무리'
-tocTitle: '마무리'
-description: '시각적 버그들에 안녕을'
+title: '결론'
+tocTitle: '결론'
+description: '시각적 버그에 안녕을'
 ---
 
 개발자들은 그들이 가진 시간 중 [21%](https://ieeexplore.ieee.org/document/895984)의 시간을 버그들을 수정하는 데 씁니다. UI 외관을 디버깅하는 건 특히 좌절스러울 수 있습니다. 재현하려면 다양한 브라우저를 실행하고, 앱을 올바른 상태로 만들고, DOM을 통과해야 합니다. 판돈도 더 커지는데 - QA에서 잡히지 않은 버그를 수정하는 비용은 QA보다 프로덕션에서 수정하는 데 [5-10배](https://www.cs.umd.edu/projects/SoftEng/ESEG/papers/82.78.pdf)더 많은 시간이 소요됩니다.
@@ -19,9 +19,7 @@ description: '시각적 버그들에 안녕을'
 - 📕 [**깃허브 저장소**](https://github.com/chromaui/learnstorybook-visual-testing-code)
 - 🌎 [**배포된 Storybook**](https://6070d9288779ab00214a9831-oymqxvbejc.chromatic.com/?path=/story/commentlist--paginated)
 
-## 더 많은 자료들
-
-더 깊이 파고들고 싶나요? 여기 유용한 추가 자료들이 있습니다 - 
+## 더 많은 자료
 
 - [**Storybook 공식 문서들**](https://storybook.js.org/docs/react/get-started/introduction) 에는 API 문서와, 예시들, 그리고 애드온 갤러리가 있습니다.
 

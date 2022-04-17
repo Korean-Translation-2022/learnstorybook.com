@@ -21,7 +21,7 @@ Redux 스토어('src/lib/store.js')를 업데이트하여 설정하고자 하는
  */
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-+ // 새로운 에러 필드는 여기에서 설정합니다.
++ // Our new error field is configured here
 + const AppStateSlice = createSlice({
 +   name: "appState",
 +   initialState: "",
@@ -47,8 +47,10 @@ const defaultTasks = [
 ];
 
 /*
+
  * 저장소는 여기서 만들어집니다.
  * 'slice'의 자세한 정보는 아래 문서에서 확인할 수 있습니다.
+
  * https://redux-toolkit.js.org/api/createSlice
  */
 const TasksSlice = createSlice({
@@ -69,7 +71,7 @@ const TasksSlice = createSlice({
 // slice 속 포함된 액션 사용을 위해 컴포넌트로부터 내보내집니다. 
 export const { updateTaskState } = TasksSlice.actions;
 
-+ // 새로운 slice에 포함된 액션은 컴포넌트에서 사용하기 위해 선언되었습니다.
++ // The actions contained in the new slice are exported to be used in our components
 + export const { updateAppState } = AppStateSlice.actions;
 
 /*
@@ -182,6 +184,7 @@ export default App;
 
 앞에서 살펴보았듯이 `TaskList` 컴포넌트는 `PureTaskList`라는 표상적 컴포넌트를 렌더링 하는 **컨테이너(container)**입니다. 정의에 의하면 컨테이너 컴포넌트는 독립적인 환경에서 간단하게 렌더링 될 수 없습니다. 컨테이너 컴포넌트는 어떠한 context가 전달되거나 서비스에 연결되어야 하기 때문입니다. 이것이 의미하는 것은 Storybook에서 컨테이너를 렌더링 하기 위해서는 필요한 컨텍스트나 서비스를 mock(예를 들어, 가상 버전을 제공하기)하여야 한다는 것입니다.
 
+
 `TaskList`을 Storybook에 배치할 때 `PureTaskList`를 렌더링하고 컨테이너를 피함으로써 이 문제에서 벗어날 수 있습니다. 이와 비슷한 방식으로 `PureInboxScreen`을 Storybook에 렌더링 할 것입니다.
 
 하지만 `PureInboxScreen` 자체는 표상적 컴포넌트이지만 그 하위 컴포넌트인 `TaskList`는 아니기 때문에 문제가 발생합니다. 어떤 의미에서 보면 `PureInboxScreen`는 “컨테이너화”되는 것에 의해 오염되었다고 볼 수 있습니다. 따라서 `InboxScreen.stories.js`에서 story를 설정할 때:
@@ -290,6 +293,7 @@ story북의 [`play`](https://storybook.js.org/docs/react/writing-stories/play-fu
 
 그럼 지금부터 살펴봅시다! 새로 만든 `PureInboxScreen` story를 업데이트하고 다음을 추가하여 컴포넌트 상호 작용을 설정합니다.
 
+
 ```diff:title=src/components/PureInboxScreen.stories.js
 import React from 'react';
 import { Provider } from 'react-redux';
@@ -300,7 +304,7 @@ import { PureInboxScreen } from './InboxScreen';
 
 import * as TaskListStories from './TaskList.stories';
 
- // Redux store의 아주 간단한 가상 버전(mock)
+ // A super-simple mock of a redux store
 const Mockstore = configureStore({
   reducer: {
     tasks: createSlice({
@@ -337,9 +341,9 @@ Error.args = {
 + export const WithInteractions = Template.bind({});
 + WithInteractions.play = async ({ canvasElement }) => {
 +   const canvas = within(canvasElement);
-+   // 첫번째 작업을 고정하는 시뮬레이션
++   // Simulates pinning the first task
 +   await fireEvent.click(canvas.getByLabelText("pinTask-1"));
-+   // 세번째 작업을 고정하는 시뮬레이션
++   // Simulates pinning the third task
 +   await fireEvent.click(canvas.getByLabelText("pinTask-3"));
 + };
 ```
@@ -352,6 +356,8 @@ Error.args = {
     type="video/mp4"
   />
 </video>
+
+The play function allows us to interact with our UI and quickly check how it responds if we update our tasks. That keeps the UI consistent at no extra manual effort. All without needing to spin up a testing environment or add additional packages.
 
 플레이 기능을 통해 UI와 상호 작용하고 작업을 업데이트하면 UI가 어떻게 반응하는지 빠르게 확인할 수 있습니다. 따라서 별도의 작업 없이 UI가 똑같이 유지됩니다. 테스트 환경을 가동하거나 패키지를 추가할 필요가 없습니다.
 
@@ -368,7 +374,7 @@ Error.args = {
 
 [**컴포넌트 기반 개발 (Component-Driven Development)**](https://www.componentdriven.org/)은 컴포넌트의 상위 계층으로 올라감에 따른 복잡성을 점진적으로 확장할 수 있도록 해줍니다. 이것의 이점 중 하나는 개발 과정에 더욱 집중할 수 있으며 가능한 모든 UI 순열의 적용 범위가 늘어난다는 것입니다. 간단히 말하면, 컴포넌트 기반 개발(CDD)은 더 높은 품질과 복잡성을 가진 사용자 인터페이스를 만들 수 있도록 도와줍니다.
 
-아직 끝이 아닙니다! UI가 완성되었다고 할 일이 모두 끝난 것은 아닙니다. 또한 우리는 시간이 지나도 UI가 내구성을 유지할 수 있도록 해야 합니다.
+아직 끝이 아닙니다! UI가 완성되었다고 할 일이 모두 끝난 것은 아닙니다. 우리는 또한 시간이 지나도 UI가 내구성을 유지할 수 있도록 해야 합니다.
 
 <div class="aside">
 💡 깃에 변경한 내역들을 커밋 하는 것도 잊지 마세요!

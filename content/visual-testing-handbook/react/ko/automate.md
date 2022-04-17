@@ -1,11 +1,12 @@
 ---
-title: '시각적 테스트 자동화'
+title: '시각적 테스팅 자동화'
 tocTitle: '자동화'
-description: '회귀 오류를 잡기 위해 시각적 테스트를 자동화하기'
+description: '회귀 오류를 잡기 위해 시각적 테스팅을 자동화하기'
 commit: 'd7daf97'
 ---
 
-자연스러운 개발 과정에서는 버그가 불가피합니다. 시각적 테스트 자동화는 기계를 사용해 사용자가 검토할 UI 외관의 변화를 감지합니다.
+개발하는 자연스러운 과정에서, 버그는 피할 수 없습니다. 시각적 테스트 자동화는 기계를 사용해 UI 겉모습이 변했는지 감지해서 인간이 검토할 수 있게 해줍니다. 
+
 
 핵심만 말하자면, 이미지 스냅샷을 각 컴포넌트의 변화형(variation)마다 찍습니다. 이는 시각적 테스트의 '기준선(baseline)'으로 쓰입니다. 각 commit마다, 새 스냅샷을 찍고, 이 기준선과 픽셀 하나하나를 비교합니다. 혹시 UI에 변한 부분이 있으면, 버그인지 의도적인 변경인지 검토해달라고 알림을 받습니다.
 
@@ -26,6 +27,7 @@ commit: 'd7daf97'
 
 그런 다음 지침에 따라 저장소를 설정합니다. `your-username`을 깃허브 계정명으로 바꿉니다.
 
+
 ```
 git init
 git add .
@@ -34,6 +36,7 @@ git branch -M main
 git remote add origin https://github.com/your-username/commentlist.git
 git push -u origin main
 ```
+
 
 ## 크로매틱(Chromatic) 설정
 
@@ -54,9 +57,11 @@ UI 테스트는 클라우드 브라우저 환경의 모든 스토리의 이미�
 
 프로젝트에 개발 패키지로 Chromatic을 추가합니다 -
 
+
 ```shell
 yarn add -D chromatic
 ```
+
 
 설치가 완료되면 필요한 모든 것을 얻을 수 있습니다. 지금이야말로 변경을 리모트 저장소로 commit하고 push할 절호의 기회입니다.
 
@@ -65,6 +70,7 @@ git add .
 git commit -m "Added Chromatic"
 git push
 ```
+
 
 Chromatic 명령어로 스토리북을 제작하여 발행하세요. 웹사이트에서 <code> project-token </code>를 하나의 Chromatic 공급 장치로 교체하는 것을 잊지 마세요.
 
@@ -85,6 +91,7 @@ yarn chromatic --project-token=<project-token>
 풀리퀘스트(PR)가 UI 변경을 포함하고 있다면, 크던 작던, 시각적 테스트를 실행하는 게 유용합니다. Chromatic은 새 스냅샷들을 이전 빌드에서 만들었던 기존의 기준선과 비교할 겁니다.
 
 그럼 이 개념을 설명하기 위해 UI를 약간 변경해 보겠습니다.
+
 
 ```shell
 git checkout -b change-commentlist-outline
@@ -219,15 +226,18 @@ CommentList.defaultProps = {
 
 변경사항을 commit하고, 저장소에 push한 뒤에 Chromatic을 실행합니다.
 
+
 ```shell
 git commit -am "make CommentList sparkle"
 git push -u origin change-commentlist-outline
 yarn chromatic --project-token=<project-token>
 ```
 
+
 깃허브 저장소에서 새 브랜치를 위한 풀리퀘스트를 엽니다.
 
 ![깃허브에서 열린 CommentList 풀리퀘스트(PR)](/visual-testing-handbook/commentlist-gh-pullrequest-optimized.png)
+
 
 사용자가 검토할 UI 변경 사항을 Chromatic으로 감지했습니다! 변경 사항 목록을 보려면 PR checks로 가서 "🟡 UI Test"를 클릭하세요. 이번 build는 "unreviewed"라고 표시되고 변경사항들은 "Tests" 테이블에 나열됩니다.
 
@@ -235,7 +245,9 @@ yarn chromatic --project-token=<project-token>
 
 ### 변경 내용 확인
 
-시각 테스트를 자동화하여 컴포넌트가 실수로 변경되지 않도록 합니다. 그러나 변경이 의도적인 것인지 아닌지 결정 여부는 여전히 개발자들에게 달려 있습니다.
+
+### Review changes
+
 
 의도적으로 변경한 경우에는 스냅샷을 받아들여 기준선을 업데이트합니다.따라서 미래의 테스트는 빨간 테두리를 두른 `CommentList`를 기준으로 비교하게 됩니다.
 
@@ -253,8 +265,10 @@ yarn chromatic --project-token=<project-token>
 
 변경사항을 만들 때마다 이 명령어를 로컬에서 실행하는 건 귀찮습니다. 프로덕션 팀은 코드를 CI/CD 파이프라인에 push할 때마다 시각적 테스트가 실행되게 트리거(trigger)를 설정합니다. 이 튜토리얼에서는 설정하지 않지만[Chromatic's CI docs](https://www.chromatic.com/docs/ci)에서 자세한 내용을 확인할 수 있습니다.
 
+
 ## 여행의 시작
 
-시각적 테스팅 핸드북은 주요 프런트엔드 팀이 UI 외관을 테스트하는 방법을 보여주는 쇼케이스였습니다. 시각적 테스팅은 UI가 의도한 설계와 일치하고 시간이 지남에 따라 버그가 발생하지 않는지 확인하는 실용적인 방법입니다.
+시각적 테스팅 핸드북은 최고의 프런트엔드 팀은 어떻게 UI 겉모습을 테스트하는지 보여주는 쇼케이스였습니다. 시각적 테스팅은 시간이 지나면서 UI가 의도한 디자인과 맞는지 검증하고, 버그에서 자유로운 상태를 유지하는 실용적인 방법입니다.
 
 이 가이드가 당신의 시각적 테스트 전략에 도움이 되기를 바랍니다. 마지막 장에서는 완전한 샘플 코드와 유용한 자료들 소개로 마무리합니다.
+
