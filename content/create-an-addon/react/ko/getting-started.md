@@ -6,7 +6,7 @@ commit: ''
 
 ![](../../images/addon-kit-demo.gif)
 
-우리는 [애드온 키트](https://github.com/storybookjs/addon-kit) 를 사용하여 프로젝트를 부트스트랩 합니다. Storybook 애드온을 구축하는 데 필요한 모든 것을 제공합니다.
+우리는 [애드온(addon) 키트](https://github.com/storybookjs/addon-kit) 를 사용하여 프로젝트를 부트스트랩 합니다. 스토리북(Storybook) 애드온을 구축하는 데 필요한 모든 것을 제공합니다.
 
 - 📝 개발 모드에서 실시간 편집
 - ⚛️ UI를 위한 React/JSX 지원
@@ -14,11 +14,11 @@ commit: ''
 - 🏷 플러그인 메타데이터
 - 🚢 [Auto](https://github.com/intuit/auto)를 사용하는 배포 관리 
 
-시작하기에 앞서, [애드온 키트 레포지토리](https://github.com/storybookjs/addon-kit)에서 **use thie template** 버튼을 클릭하세요. 그러면 모든 애드온 키트가 포함된 새로운 레포지토리가 생성됩니다.
+시작하기에 앞서, [애드온 키트 저장소](https://github.com/storybookjs/addon-kit)에서 **use thie template** 버튼을 클릭하세요. 그러면 모든 애드온 키트가 포함된 새로운 저장소가 생성됩니다.
 
 ![](../../images/addon-kit.png)
 
-다음으로, 레포지토리를 클론하고 의존성(dependency)을 설치합니다.
+다음으로, 저장소를 클론하고 의존성(dependency)을 설치합니다.
 
 ```bash
 yarn
