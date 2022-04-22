@@ -2,7 +2,6 @@
 title: '간단한 컴포넌트 만들기'
 tocTitle: '간단한 컴포넌트'
 description: '간단한 컴포넌트를 독립적으로 만들어봅시다'
-commit: 'd5d89dd'
 ---
 
 우리는 [컴포넌트 기반 개발(Component-Driven Development)](https://www.componentdriven.org/)(CDD) 방법론에 따라 UI를 만들어 볼 것입니다. 이는 컴포넌트부터 시작하여 마지막 화면에 이르기까지 상향적(bottom-up)으로 UI를 개발하는 과정입니다. CDD는 UI를 구축할 때 직면하게 되는 규모의 복잡성을 해결하는 데 도움이 됩니다.
@@ -20,7 +19,7 @@ commit: 'd5d89dd'
 
 ## 설정하기
 
-먼저 `Task` 컴포넌트와 그에 해당하는 스토리 파일을 만들어 봅시다. `src/components/Task.js`와 `src/components/Task.stories.js`을 생성해주세요.
+먼저 `Task` 컴포넌트와 그에 해당하는 스토리 파일을 만들어 봅시다. `src/components/Task.js`와 `src/components/Task.stories.js`을 생성해 주세요.
 
 `Task`의 기본 구현부터 시작하겠습니다. 우리가 필요로 하는 속성들과 여러분이 task에 대해 취할 수 있는 두 가지 액션(목록 간 이동하는 것)을 간단히 살펴보도록 하겠습니다.
 
@@ -86,7 +85,7 @@ Archived.args = {
   - 스토리(story)
   - 스토리(story)
 
-스토리북에게 우리가 문서화하고 있는 컴포넌트에 대해 알려주기 위해, 아래 사항들을 포함하는 `default` export를 생성합니다.
+스토리북에게 우리가 문서화하고 있는 컴포넌트에 대해 알려주기 위해, 아래 사항들을 포함하는 `default` export를 생성합니다:
 
 - `component` -- 해당 컴포넌트
 - `title` -- 스토리북 앱의 사이드바에서 컴포넌트를 참조하는 방법
